@@ -1,0 +1,4 @@
+streamlit
+python-dotenv
+
+# 팀원 확인 필요: MCP 클라이언트 통신 방식(mcp SDK 사용 여부), LLM SDK(openai / anthropic)
