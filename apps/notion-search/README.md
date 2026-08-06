@@ -67,31 +67,48 @@ cp .env.example .env  # 값 채우기
 streamlit run app.py
 ```
 
-## MCP 연동 방식 (참고자료 — 최종 방식은 mcp_client.py 담당자가 결정)
+## MCP 연동 방식 (결정: 옵션 B)
 
-Notion 공식 문서 기준으로 연결 방식이 두 가지 있다. 어느 쪽으로 갈지는 mcp_client.py 담당자가 정하면 됨.
+Notion 공식 문서 기준으로 연결 방식이 두 가지 있는데, 실제로 `manual_mcp_test.py`로 둘 다 검증해본 결과 **옵션 B로 결정**.
 
-**옵션 A: 원격 호스팅 서버** (`https://mcp.notion.com/mcp`, Streamable HTTP)
-- 인증: OAuth 2.0 + PKCE (authorization/token endpoint 조회 -> 동적 클라이언트 등록 -> 브라우저 리다이렉트 인증 -> code 교환)
+**옵션 A: 원격 호스팅 서버** (`https://mcp.notion.com/mcp`, Streamable HTTP) — 채택 안 함
+- 인증: OAuth 2.0 + PKCE. 브라우저 리다이렉트로 사람이 매번 로그인/승인해야 토큰이 나오는 구조라, 사람 개입 없이 돌아가야 하는 Streamlit 백엔드에는 안 맞음. (Claude Desktop에서 됐던 건 앱이 이 로그인 팝업을 대신 띄워줬기 때문.)
+- `NOTION_TOKEN`(Integration Secret)을 Bearer로 그냥 보내면 **401 Unauthorized** — OAuth 토큰이 아니라서 거부됨.
 - 가이드: [Build an MCP client](https://developers.notion.com/guides/mcp/build-mcp-client)
 
-**옵션 B: 오픈소스 로컬 서버** (`@notionhq/notion-mcp-server`, Node 패키지, npx로 실행)
+**옵션 B: 오픈소스 로컬 서버** (`@notionhq/notion-mcp-server`, Node 패키지, npx로 실행) — **채택**
 - 인증: OAuth 없이 `NOTION_TOKEN`(Internal Integration Secret) 환경변수 하나. https://www.notion.so/profile/integrations 에서 발급, 대상 페이지에 Connections로 연결 필요
+- 전송 방식: **stdio** (원격 HTTP 아님). `mcp` SDK의 `stdio_client` + `StdioServerParameters(command="npx", args=["-y", "@notionhq/notion-mcp-server"], env={"NOTION_TOKEN": ...})`로 붙는다. 예제: `manual_mcp_test.py`
 - 참고: [오픈소스 저장소](https://github.com/makenotion/notion-mcp-server)
-- 스펙 문서의 "Notion Integration 생성" 표현은 이 토큰 발급 절차를 가리키는 것으로 보임
+- **배포 시 주의**: 이 서버를 npx로 띄우는 방식이라, 배포 환경에도 Node.js가 설치되어 있어야 함 (로컬 개발 머신만이 아니라 실제 서비스가 돌아갈 서버/호스팅에도 필요).
 
-**공통: 사용할 tool**
+**사용할 tool (실제 확인된 이름 — 스펙 문서의 `notion-search`/`notion-fetch`와 다름)**
 
-| tool | 용도 | 입력 | rate limit |
-|---|---|---|---|
-| `notion-search` | 워크스페이스 검색 | 자연어 쿼리 | 분당 30 req |
-| `notion-fetch` | 페이지/DB 본문·스키마 조회 | 페이지 ID/URL 또는 `self` | 분당 180 req(공통) |
+옵션 B 서버는 Notion REST API를 그대로 감싼 도구 이름을 쓴다. 스펙 문서의 `notion-search`/`notion-fetch`는 옵션 A(원격 서버) 전용 이름으로 보이고, 옵션 B에는 그 이름의 tool이 없음.
 
-- ATTRIBUTE 필터(학년/과목/날짜)는 `notion-search`만으로는 부족할 수 있어, 먼저 `notion-fetch`로 데이터베이스
+| tool | 용도 | 입력 |
+|---|---|---|
+| `API-post-search` | 워크스페이스 검색 | `{"query": "..."}` |
+| `API-retrieve-a-page` | 페이지 본문 조회 | `{"page_id": "..."}` |
+| `API-retrieve-page-markdown` | 페이지를 마크다운으로 조회 | `{"page_id": "..."}` |
+| `API-query-data-source` | DB(데이터소스) 조회/필터 | 데이터소스 ID + 필터 |
+| `API-retrieve-a-data-source` | DB 스키마(속성명) 조회 | 데이터소스 ID |
+
+전체 도구 목록은 `manual_mcp_test.py` 실행 시 `tools/list` 출력 참고 (24개).
+
+- ATTRIBUTE 필터(학년/과목/날짜)는 `API-post-search`만으로는 부족할 수 있어, 먼저 `API-retrieve-a-data-source`로
   스키마(속성명)를 조회한 뒤 어떤 속성을 필터 조건으로 쓸지 확인이 필요함.
-- 전체 도구 스펙: [Notion MCP Supported tools](https://developers.notion.com/guides/mcp/mcp-supported-tools)
 - Notion Integration을 대상 페이지/데이터베이스에 연결(Connections)해야 검색·조회가 됨. 프로젝트 데이터셋
   외에 팀 회의록 등 다른 페이지는 연결하지 않는 걸 권장 (검색 노이즈 방지).
+
+**로컬에서 검증하려면 (팀원 각자)**
+
+```bash
+cd apps/notion-search
+cp .env.example .env   # NOTION_TOKEN에 본인이 발급받은(or 공유받은) Integration Secret 채우기
+pip install -r requirements.txt
+python manual_mcp_test.py "검색어"
+```
 
 ## 골든셋
 
