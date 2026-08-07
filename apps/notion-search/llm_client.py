@@ -6,7 +6,10 @@ query_classifier.py, summarizer.py가 이 모듈의 generate_completion()을 호
 
 
 def generate_completion(prompt: str, system: str | None = None) -> str:
-    """프롬프트를 LLM(OpenAI/Claude API 등)에 보내고 텍스트 응답을 반환한다.
+    """프롬프트를 LLM에 보내고 텍스트 응답을 반환한다.
+
+    가이드 Day3 기술 스택표 기준 Claude API 예정 (모델명은 docs.claude.com 확인).
+    최종 확정은 담당자가.
 
     TODO(팀원):
     - API 클라이언트 초기화 (환경변수에서 API 키 로드)

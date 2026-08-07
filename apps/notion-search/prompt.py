@@ -1,11 +1,11 @@
 """LLM 프롬프트 템플릿 모음. (담당: 나)
 
 query_classifier.py, summarizer.py에서 이 템플릿들을 가져다 쓰고, 실제 호출은
-openai_client.generate_completion()에 위임한다.
+llm_client.generate_completion()에 위임한다.
 """
 
 # ATTRIBUTE 타입 질의에서 학년/과목/날짜를 추출할 때 사용.
-# openai_client가 이 프롬프트 + raw_query를 넣어 호출하고, JSON 응답을 파싱해 QueryFilters로 변환한다.
+# llm_client가 이 프롬프트 + raw_query를 넣어 호출하고, JSON 응답을 파싱해 QueryFilters로 변환한다.
 EXTRACT_FILTERS_PROMPT = """다음 질의에서 학년, 과목, 날짜 범위를 추출해 JSON으로만 응답하세요.
 해당 정보가 없으면 null로 두세요.
 

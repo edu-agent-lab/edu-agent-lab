@@ -2,4 +2,6 @@ streamlit
 python-dotenv
 mcp
 
-# 팀원 확인 필요: LLM SDK(openai / anthropic)
+# LLM SDK: 가이드 Day3 기술 스택표 기준 Claude API 예정 -> anthropic
+# 팀원 최종 확인 후 주석 해제
+# anthropic

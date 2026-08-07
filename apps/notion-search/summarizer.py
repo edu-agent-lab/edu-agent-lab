@@ -6,7 +6,7 @@ mcp_client가 반환한 NotionPage들을 받아 각각 LLM 요약을 생성한�
 from __future__ import annotations
 
 from mcp_client import NotionPage
-from openai_client import generate_completion
+from llm_client import generate_completion
 from prompt import SUMMARIZE_PAGE_PROMPT
 
 

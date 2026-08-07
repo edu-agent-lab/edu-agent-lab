@@ -42,7 +42,7 @@ Streamlit 화면 출력
 | `prompt.py` | 나 | 필터 추출/요약용 프롬프트 템플릿 |
 | `summarizer.py` | 나 | 검색 결과 페이지별 요약 생성 |
 | `mcp_client.py` | 팀원 | Notion MCP 서버 연결, 검색/본문 조회 tool call |
-| `openai_client.py` | 팀원 | LLM API 클라이언트 |
+| `llm_client.py` | 팀원 | LLM API 클라이언트 (가이드 기준 Claude API 예정) |
 | `app.py` | 공통 | Streamlit UI, 파이프라인 연결 |
 
 ## 모듈 간 계약

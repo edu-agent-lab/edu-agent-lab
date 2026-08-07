@@ -1,7 +1,7 @@
 """자연어 질의 -> QueryIntent 변환. (담당: 나)
 
 mcp_client.search_pages()가 이 모듈이 만든 QueryIntent를 입력으로 받는다.
-필터 추출(학년/과목/날짜)이 필요한 ATTRIBUTE 타입은 LLM(openai_client) + prompt.py 템플릿을 활용해 구현 예정.
+필터 추출(학년/과목/날짜)이 필요한 ATTRIBUTE 타입은 LLM(llm_client) + prompt.py 템플릿을 활용해 구현 예정.
 """
 
 from __future__ import annotations
@@ -36,7 +36,7 @@ def classify_query(raw_query: str) -> QueryIntent:
 
     TODO:
     - TOPIC/TITLE/ATTRIBUTE 판별 로직 (규칙 기반 우선, 애매하면 LLM 보조)
-    - ATTRIBUTE 타입일 때 prompt.EXTRACT_FILTERS_PROMPT + openai_client.generate_completion()으로
+    - ATTRIBUTE 타입일 때 prompt.EXTRACT_FILTERS_PROMPT + llm_client.generate_completion()으로
       학년/과목/날짜 추출 -> QueryFilters로 파싱
     """
     raise NotImplementedError
