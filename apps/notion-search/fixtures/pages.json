@@ -1,0 +1,978 @@
+[
+  {
+    "page_id": "44a9feee-0a11-820c-a93a-819f049fb3b7",
+    "title": "과학 퀴즈 - 물질 관련",
+    "url": "https://app.notion.com/p/44a9feee0a11820ca93a819f049fb3b7",
+    "content": "# 자료 개요\n- 자료 유형: 퀴즈\n- 대상: 고등학교 1학년 1학기\n<empty-block/>\n## 학습 목표\n- 원소와 물질의 구성 개념을 구분한다.\n- 주기율표에서 원소 성질의 규칙성을 설명한다.\n- 물질의 결합과 성질을 관련지어 해석한다.\n## 핵심 개념\n- 스펙트럼\n- 원소\n- 주기율표\n- 주기성\n- 화학 결합\n- 물질의 성질\n## 객관식 문항\n### 문항 구성\n- 객관식\n→ 예시\n### 객관식 1\n스펙트럼 분석을 통해 알 수 있는 내용으로 적절한 것은?\n① 천체를 구성하는 원소 ② 물체의 가격 ③ 날씨 예보 정확도 ④ 생물의 나이\n- 정답: **①**\n- 해설: 스펙트럼은 물질을 구성하는 원소 추론에 활용된다.\n<empty-block/>\n—\n<empty-block/>\n- 서술형\n### 서술형 1\n주기율표가 과학에서 유용한 이유를 쓰시오.\n- 예시 답안: 원소의 성질이 규칙적으로 나타나므로 성질을 예측하고 설명하는 데 도움이 된다.\n- 채점 포인트: 주기성, 예측, 설명이 포함되었는지 확인\n### 서술형 2\n물질의 결합 방식과 성질을 연결해 설명해야 하는 이유를 쓰시오.\n- 예시 답안: 물질의 성질은 구성 입자와 결합 방식에 따라 달라질 수 있기 때문이다.\n- 채점 포인트: 결합과 성질의 관련성을 설명했는지 확인\n<empty-block/>\n## 학생 자기 점검표 만들기\n- [ ] 성취기준의 핵심 개념을 말로 설명할 수 있다.\n- [ ] 문제 풀이 또는 답안 작성 과정에서 근거를 제시할 수 있다.\n- [ ] 틀린 문항의 오답 원인을 설명할 수 있다.\n- [ ] 개념을 다른 예시에 적용할 수 있다.",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2026-04-02",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": []
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": {
+          "id": "78462034-e79c-4b27-aff6-a5a78f4ba0de",
+          "name": "고1",
+          "color": "red"
+        }
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "과학 퀴즈 - 물질 관련",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "과학 퀴즈 - 물질 관련",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "b2e9feee-0a11-8367-ad99-815185acc146",
+    "title": "주장하는 글의 구조와 연결어 이해 퀴즈",
+    "url": "https://app.notion.com/p/b2e9feee0a118367ad99815185acc146",
+    "content": "- 과목: 공통영어1\n## 개념 설명\n이 퀴즈는 공통영어1의 이해 영역과 표현 영역을 함께 다루되, 핵심은 주장문 구조와 연결어를 통한 논리 관계 파악\n## 학습 목표\n- 영어 주장문에서 주장과 근거를 구분한다.\n- 연결어의 논리적 기능을 이해한다.\n- 간단한 영어 문장으로 예시와 결론을 표현한다.\n## 원하는 문항 예시\n### 객관식 1\nWhich word is usually used to show contrast?\n① however ② therefore ③ for example ④ first\n- 정답: **①**\n- 해설: however는 대조 관계를 나타낸다.\n### 객관식 2\nIn an argumentative paragraph, evidence is used to...\n① decorate the page ② support the claim ③ hide the topic ④ end the sentence\n- 정답: **②**\n- 해설: evidence는 주장을 뒷받침한다.\n-\n## 오답 분석 및 오개념 포인트\nhowever와 therefore를 모두 ‘그래서’처럼 해석하거나, 예시 연결어와 결과 연결어를 구분하지 못하는 경우가 있다.\n## 학생 자기 점검표\n→ 만드는 문제 수준에 맞게 점검표 자동 생성 하고 싶음.\n## 평가 루브릭 (이것도 가능하면 수정 필요)ㄴ\\\\\n<table header-row=\"true\">\n<tr>\n<td>기준</td>\n<td>우수</td>\n<td>보통</td>\n<td>보완 필요</td>\n</tr>\n<tr>\n<td>개념 이해</td>\n<td>핵심 개념을 정확히 설명하고 문항에 적용함</td>\n<td>개념은 이해했으나 설명이 일부 부족함</td>\n<td>핵심 개념을 혼동하거나 적용이 어려움</td>\n</tr>\n<tr>\n<td>근거 제시</td>\n<td>정답 선택 이유와 풀이 과정을 분명히 설명함</td>\n<td>정답은 맞지만 근거 설명이 짧음</td>\n<td>정답 여부와 관계없이 근거 제시가 부족함</td>\n</tr>\n<tr>\n<td>오답 분석</td>\n<td>오답 원인을 찾아 개념을 다시 정리함</td>\n<td>오답 원인을 일부 확인함</td>\n<td>오답 원인을 설명하지 못함</td>\n</tr>\n<tr>\n<td>성취기준 연결</td>\n<td>문항이 다루는 성취기준의 핵심 수행을 이해함</td>\n<td>일부 연결은 이해함</td>\n<td>성취기준과 문항의 관계가 불명확함</td>\n</tr>\n</table>",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": null
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "26-2",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "26-2",
+            "href": null
+          }
+        ]
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "dcf3397e-6cc6-4e6d-8d34-40db72d9bcb8",
+            "name": "공통 영어1",
+            "color": "pink"
+          }
+        ]
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": null
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "주장하는 글의 구조와 연결어 이해 퀴즈",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "주장하는 글의 구조와 연결어 이해 퀴즈",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "1759feee-0a11-83ae-9152-01c3d60b2c9d",
+    "title": "생활 속 비용 조건을 부등식으로 비교하기",
+    "url": "https://app.notion.com/p/1759feee0a1183ae915201c3d60b2c9d",
+    "content": "### 과목 정보\n- 자료 유형: 프로젝트\n- 대상: 고등학교 1학년 1학기\n- 과목: 공통수학1\n<empty-block/>\n## 학습 목표\n- 생활 속 비용 조건을 문자식으로 나타낸다.\n- 연립일차부등식을 이용해 조건별 유리한 범위를 판단한다.\n- 수학적 모델의 한계와 실제 조건을 구분한다.\n<empty-block/>\n## 준비 자료\n- 교과서 또는 수업 자료\n- 조사 기록지\n- 표 계산 도구 또는 노션/스프레드시트\n- 발표 자료 템플릿\n- 출처 기록 양식\n<empty-block/>\n## 수행 절차\n1. 비교할 비용 조건 2\\~3개를 정한다.\n2. 기본요금, 추가요금, 할인 조건을 문자로 나타낸다.\n3. 조건별 총비용 식을 작성한다.\n4. 특정 사용량에서 비용을 계산한다.\n5. 어느 조건이 더 저렴한지 부등식으로 나타낸다.\n6. 사용량 범위를 구하고 선택 기준을 설명한다.\n7. 현실 요금 자료를 단순화한 한계를 적는다.\n<empty-block/>\n## 제출물\n- 비용 조건 정리표\n- 문자식\n- 연립일차부등식 풀이 과정\n- 조건별 선택 설명\n- 모델 한계 메모\n## 학생 활동지\n- 위 내용에 맞게 활동지 생성 도움 받고 싶음.\n<empty-block/>\n## 평가 기준\n<table header-row=\"true\">\n<colgroup>\n<col>\n<col width=\"559\">\n</colgroup>\n<tr>\n<td>기준</td>\n<td>평가 포인트</td>\n</tr>\n<tr>\n<td>성취기준 직접성</td>\n<td>비용 비교 활동이 부등식 풀이와 범위 해석을 포함하는가</td>\n</tr>\n<tr>\n<td>식 세우기</td>\n<td>실제 조건을 문자식으로 적절히 표현했는가</td>\n</tr>\n<tr>\n<td>계산과 해석</td>\n<td>부등식 풀이 결과를 상황에 맞게 해석했는가</td>\n</tr>\n<tr>\n<td>모델 한계</td>\n<td>현실 조건과 수학 모델의 차이를 설명했는가</td>\n</tr>\n</table>",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2025-09-18",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "bf14bf39-27c0-4e71-873b-76ec87e10430",
+            "name": "공통수학1",
+            "color": "green"
+          }
+        ]
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": {
+          "id": "78462034-e79c-4b27-aff6-a5a78f4ba0de",
+          "name": "고1",
+          "color": "red"
+        }
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "생활 속 비용 조건을 부등식으로 비교하기",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "생활 속 비용 조건을 부등식으로 비교하기",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "2aa9feee-0a11-820b-b0b1-015c56a62236",
+    "title": "공통 수학 학습자료 생성 요청",
+    "url": "https://app.notion.com/p/2aa9feee0a11820bb0b1015c56a62236",
+    "content": "# 기본 정보\n- 대상: 고등학교 1학년 1학기\n- 자료 유형: 프로젝트\n- 주제: 생활 속 비용 조건을 부등식으로 비교하기\n- 원하는 활동 자료 유형 : 수학 모델링 프로젝트 활동지 + 조건별 선택 보고서\n\t- 휴대폰 요금제, 구독료, 교통비처럼 일상에서 접하는 비용 조건을 수학적으로 비교하는 프로젝트 자료를 만들고 싶음.\n\t- 단순 계산 활동이 아니라, 사용량에 따라 어떤 조건이 더 유리한지 부등식이나 문자식으로 판단하는 활동이면 좋겠음.\n- 일차함수 모델링이 고1 1학기 공통수학1 범위와 어긋난다면, 성취기준에 맞게 주제나 활동 범위를 수정을 해줬으면 좋겠음.",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2025-10-07",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": []
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": {
+          "id": "78462034-e79c-4b27-aff6-a5a78f4ba0de",
+          "name": "고1",
+          "color": "red"
+        }
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "공통 수학 학습자료 생성 요청",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "공통 수학 학습자료 생성 요청",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "aa29feee-0a11-8314-89b8-81148082c313",
+    "title": "뉴스 기사 제목 vs 본문 분석하기 프로젝트",
+    "url": "https://app.notion.com/p/vs-aa29feee0a11831489b881148082c313",
+    "content": "- 과목: 공통국어1\n- 자료 유형: 프로젝트\n- 주제: 뉴스 기사 제목과 본문의 관점 차이 분석하기\n- 원하는 활동 자료 유형: 매체 비판적 읽기 프로젝트 + 기사 비교표 자료\n## 자료 생성 목적\n- 실제 수업에서 바로 참고할 수 있는 수준이면 좋겠음.\n- 학생 활동지, 평가 기준이 같이 있으면 좋겠음.\n- 너무 보고서처럼 딱딱하기보다는 교사가 수업 준비하면서 정리한 느낌이면 좋겠음.",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2025-10-07",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "4343f111-09c5-44d6-b17f-c773624fae86",
+            "name": "공통국어1",
+            "color": "blue"
+          }
+        ]
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": null
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "뉴스 기사 제목 vs 본문 분석하기 프로젝트",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "뉴스 기사 제목 vs 본문 분석하기 프로젝트",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "a729feee-0a11-8276-962f-01c90dcf6187",
+    "title": "토론수업 계획안",
+    "url": "https://app.notion.com/p/a729feee0a118276962f01c90dcf6187",
+    "content": "# 학교 영어 수업에서 AI 번역기를 활용해도 되는가?\n- 토론 이유\n: AI 번역기는 학생들이 실제로 많이 사용하는 도구다.<br>하지만 이 주제는 영어 표현을 읽고 쓰는 활동보다 “번역기 사용을 허용할 것인가”라는 도구 윤리 논쟁으로 흐르기 쉽기 때문에 영어과 성취 기준을 면밀히 파악하고 토론을 진행해야할 수 있다.\n<empty-block/>\n- 쟁점 정리\n\t- 찬성 : 모르는 표현을 빠르게 확인할 수 있음, 또한 초안 작성과 표현 비교에 도움이 될 것임\n\t- 반대 : 영어 표현 능력이 약해질 수 있음 → 이건 반대 쟁점 좀 더 추가하고 싶은데..\n## 수업 흐름\n1. 배경 자료 읽기\n2. 성취기준과 연결되는 핵심 질문 확인\n3. 개인 입장 정리\n4. AI 번역문과 학생 수정문 비교\n5. 찬반 토론\n6. 최종 입장문 작성\n7. 성취기준 도달 여부 자기 점검\n<empty-block/>\n## 학생 활동지\n### 3. 주장 근거 카드\n<table header-row=\"true\">\n<tr>\n<td>주장</td>\n<td>근거</td>\n<td>자료 or 사례</td>\n</tr>\n<tr>\n<td>1</td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td>2</td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td>3</td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td>4</td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td>5</td>\n<td></td>\n<td></td>\n</tr>\n</table>\n### 4. 반론 예상\n<table header-row=\"true\">\n<tr>\n<td>상대가 제기할 수 있는 반론</td>\n<td>나의 재반박</td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n</tr>\n</table>\n## 평가 루브릭\n- 아직 잘 모르겠음. 생성 필요함!",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": null
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "dcf3397e-6cc6-4e6d-8d34-40db72d9bcb8",
+            "name": "공통 영어1",
+            "color": "pink"
+          }
+        ]
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": null
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "토론수업 계획안",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "토론수업 계획안",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "8959feee-0a11-83dd-a18e-01899015567c",
+    "title": "근대화 과정에서 외세의 수용은 불가피했는가?",
+    "url": "https://app.notion.com/p/8959feee0a1183dda18e01899015567c",
+    "content": "## 수업 목표\n- 개항 이후 조선 사회의 변화를 역사적 맥락에서 설명한다.\n- 근대 국가 수립 노력과 외세 영향의 관계를 비교한다.\n- 역사 자료를 근거로 자신의 해석을 제시한다.\n<empty-block/>\n## 쟁점\n- 찬성 : 국제 정세상 외국 제도와 기술 수용은 피하기 어려웠을 수밖에 없다는 주장 유지\n- 반대 : 외세 의존은 주권 침해와 불평등 조약 문제를 심화했다는 주장을 유지\n<empty-block/>\n## 원하는 루브릭\n→ 우수 / 보통 / 낮음 으로 구분\n- 쟁점 이해 : 양쪽 입장과 조건을 균형 있게 이해하고 공격적이지 않게 토론을 잘 진행헀으면 “우수”로 구분\n- 표현 : 주장, 근거, 반론, 결론이 분명한 표현을 가지고 주장을 펼쳤으면 “우수”로 구분\n- 근거 활용 : 아직 잘 모르겠음. 뭘로 테스트하지?",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2025-10-08",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": []
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "47cd0b11-3054-4826-8629-f3b4af15ba7a",
+            "name": "한국사1",
+            "color": "brown"
+          }
+        ]
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": null
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "근대화 과정에서 외세의 수용은 불가피했는가?",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "근대화 과정에서 외세의 수용은 불가피했는가?",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "ca39feee-0a11-827b-bcf5-81ea9f4377dc",
+    "title": "통합 국어 1 토론 구성하기",
+    "url": "https://app.notion.com/p/1-ca39feee0a11827bbcf581ea9f4377dc",
+    "content": "- 대상 : 고등학교 1학년 1학기\n- 과목 : 공통국어1\n- 주제: 생성형 AI로 쓴 글도 나의 글이라고 볼 수 있는가?\n- 원하는 활동 자료 유형: 사회적 의제 매체 분석 + 토론 + 사용 기준 안내문 작성 자료\n<empty-block/>\n사회적 의제 매체 분석 → 찬반 토론 → 학교 AI 글쓰기 사용 기준 안내문 작성 순서로 구성했으면 좋겠음!",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2026-02-16",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "26-1",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "26-1",
+            "href": null
+          }
+        ]
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": []
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": {
+          "id": "78462034-e79c-4b27-aff6-a5a78f4ba0de",
+          "name": "고1",
+          "color": "red"
+        }
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "통합 국어 1 토론 구성하기",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "통합 국어 1 토론 구성하기",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "2fd9feee-0a11-824c-9307-01934594ee61",
+    "title": "유전자 편집 기술 관련 교육 교안",
+    "url": "https://app.notion.com/p/2fd9feee0a11824c930701934594ee61",
+    "content": "# 통합과학1\n- 토론\n- 주제: 유전자 편집 기술은 어디까지 허용되어야 하는가?\n- CRISPR 같은 유전자 편집 기술을 소재로, 과학기술의 활용 범위와 윤리적 기준을 생각해보는 토론 수업자료를 만들고 싶음.\n<empty-block/>\n**주의점**\n- 현재 학생들 수준에 맞는 논점으로 잡아야 함. 예를 들면 질병 치료·배아 편집·능력 향상·사회적 불평등 같은 것들\n<empty-block/>",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2026-04-08",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "26-1",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "26-1",
+            "href": null
+          }
+        ]
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "414b6988-119a-4f62-a2d3-ca91c6c90703",
+            "name": "통합 과학1",
+            "color": "red"
+          }
+        ]
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": null
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "유전자 편집 기술 관련 교육 교안",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "유전자 편집 기술 관련 교육 교안",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "b959feee-0a11-8249-8b95-015bbd1f6ef0",
+    "title": "공통영어1",
+    "url": "https://app.notion.com/p/1-b959feee0a1182498b95015bbd1f6ef0",
+    "content": "# 주장하는 글의 구조와 연결어 이해 퀴즈\n## 기본 정보\n- 과목: 공통영어1\n- 자료 유형: 퀴즈\n## 자료 생성 목적\n- however, therefore, for example 같은 연결어를 통해 글의 논리 관계를 파악하는 퀴즈 자료를 만들고 싶음.\n- 단순히 연결어 뜻을 묻는 문제가 아니라, 주장하는 글의 구조와 문장 간 관계를 이해하는 활동으로 구성되면 좋겠음.\n- 학생들이 글의 흐름을 읽고 적절한 연결어를 고르거나, 연결어가 글의 의미를 어떻게 바꾸는지 확인할 수 있으면 함.\n## 추가 요청\n- 연결어 뜻 암기 퀴즈에 그치지 않고, 영어 독해 과정에서 논리 관계를 파악하는 활동으로 구성되는지 검토해줘.",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2025-12-12",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "26-1",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "26-1",
+            "href": null
+          }
+        ]
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": []
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": null
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "공통영어1",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "공통영어1",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "5829feee-0a11-834d-b9e9-81ad156171ea",
+    "title": "통합사회 토론 자료 만들기",
+    "url": "https://app.notion.com/p/5829feee0a11834db9e981ad156171ea",
+    "content": "## 기본 정보\n- 대상: 고등학교 1학년 1학기\n- 과목: 통합사회1\n- 자료 유형: 토론\n- 주제: 개발과 환경 보전 중 무엇을 우선해야 하는가?\n- 원하는 활동 자료 유형: 쟁점 토론 활동지 + 최종 입장문 작성 자료\n<empty-block/>\n## 자료 생성 목적\n- 실제 수업에서 바로 참고할 수 있는 수준이면 좋겠음.\n- 학생 활동지, 평가 기준이 명확하게 작성되면 좋겠음.\n<empty-block/>\n## AI에게 생성해달라고 하고 싶은 것\n- 지역 개발 사례를 넣을 수 있게 찬반 논점, 근거 카드, 최종 입장문 활동까지 만들 수 있나?\n- 외부 자료를 썼다면 출처도 있으면 좋겠음.\n## 검증에서 확인됐으면 하는점\n- 성취기준과 활동이 직접 연결되는지, 고1 1학기 수준에서 바로 수업 자료로 쓸 수 있는지 확인 필요",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": null
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "26-1",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "26-1",
+            "href": null
+          }
+        ]
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": [
+          {
+            "id": "7af097fe-6850-40ba-8a76-5a42e766be94",
+            "name": "통합 사회1",
+            "color": "default"
+          }
+        ]
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": {
+          "id": "78462034-e79c-4b27-aff6-a5a78f4ba0de",
+          "name": "고1",
+          "color": "red"
+        }
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "통합사회 토론 자료 만들기",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "통합사회 토론 자료 만들기",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "b669feee-0a11-8219-ae40-01d109b66c3b",
+    "title": "다항식의 연산과 인수분해 퀴즈",
+    "url": "https://app.notion.com/p/b669feee0a118219ae4001d109b66c3b",
+    "content": "## 기본 정보\n- 대상: 고등학교 1학년 1학기\n- 과목: 공통수학1\n- 자료 유형: 퀴즈\n- 주제: 다항식의 연산과 인수분해 개념 확인 퀴즈\n- 원하는 활동 자료 유형: 개념 확인 퀴즈 + 오답 분석 자료\n## 생성 요청\n- 다항식 연산과 인수분해를 확인하는 퀴즈로, 오답 분석까지 포함해줘.\n\t- 학생이 틀릴 경우를 대비해서 오답 케이스도 추가 분류하기 (채점 자동화 하고 싶음)",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2025-07-07",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "25-2",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "25-2",
+            "href": null
+          }
+        ]
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": []
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": {
+          "id": "78462034-e79c-4b27-aff6-a5a78f4ba0de",
+          "name": "고1",
+          "color": "red"
+        }
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "다항식의 연산과 인수분해 퀴즈",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "다항식의 연산과 인수분해 퀴즈",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "ae59feee-0a11-831a-bfec-812c6060fa13",
+    "title": "학교생활 챗봇 만들기",
+    "url": "https://app.notion.com/p/ae59feee0a11831abfec812c6060fa13",
+    "content": "## 자료 개요\n- 자료 유형: 프로젝트\n- 대상: 고등학교 1학년 1학기\n- 과목: 정보\n## 프로젝트 배경\n챗봇 기획은 학생 관심도가 높고 실제적인 문제 해결 활동이 될 수 있다. 그러나 고1 1학기 공통 교과 데이터셋 기준에서는 정보 과목 편성 여부가 학교마다 다르고, 챗봇 구현은 선택 과목 또는 동아리·진로 활동 성격이 강하다. 따라서 SOFT FAIL로 검수하되, 정보 성취기준 요지를 데이터 수집과 문제 분해·모델링 중심으로 수정했다.\n## 학습 목표\n- 학교생활 문제를 사용자 관점에서 정의한다.\n- 반복 질문을 수집·분류하고 문제를 작게 나눈다.\n- 정보 교과 또는 창체 자료로 분리 운영이 필요한 이유를 설명한다.\n## 수행 절차\n1. 학교생활에서 반복되는 질문을 수집한다.\n2. 사용자 유형을 정한다.\n3. 질문을 기능별 작은 문제로 분해한다.\n4. 답변 가능한 범위와 답하지 않아야 할 범위를 구분한다.\n5. 질문-답변 쌍을 작성한다.\n6. 대화 흐름도를 만든다.\n7. 개인정보와 부정확한 안내 위험을 점검한다.\n## 학생 활동지\n### 1. 프로젝트 질문\n- 우리가 해결하거나 탐구할 질문:\n- 이 질문이 성취기준과 연결되는 이유:\n### 2. 프로젝트 결론과 한계\n- 결론:\n- 자료의 한계:\n- 추가로 확인할 점:\n## 피드백 포인트 구상\n- 고1 공통과목 자료로 제시하면 부적합 가능성 큼\n- 정보 과목 수업인지 창체/동아리 활동인지 구분\n- 실제 구현보다 문제 분해와 모델링 중심으로 제한",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2025-07-07",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "25-2",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "25-2",
+            "href": null
+          }
+        ]
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": []
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": {
+          "id": "78462034-e79c-4b27-aff6-a5a78f4ba0de",
+          "name": "고1",
+          "color": "red"
+        }
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "학교생활 챗봇 만들기",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "학교생활 챗봇 만들기",
+            "href": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "page_id": "e259feee-0a11-82ec-b7f3-81d86ecbde7d",
+    "title": "“개발과 환경 보전 중 무엇을 우선할 수 있을지” 토론 계획안",
+    "url": "https://app.notion.com/p/e259feee0a1182ecb7f381d86ecbde7d",
+    "content": "## 개요\n---\n- 자료 유형: 토론\n- 대상: 고등학교 1학년 1학기\n- 과목: 통합사회1\n- 원하는 주제 : 개발과 환경 보전 중 무엇을 우선해야 하는가?\n<empty-block/>\n## 수업 목표\n---\n- 개발과 환경 보전의 필요성을 통합사회 관점에서 비교한다.\n- 환경 문제를 시민의 권리와 공익의 관점에서 설명한다.\n- 자료를 근거로 조건부 대안을 제안한다.\n<empty-block/>\n## 배경 읽기 자료\n---\n지역 개발은 일자리, 교통, 주거, 문화 시설 확충으로 이어질 수 있지만 생태계 훼손과 생활환경 악화를 동반할 수 있다.\n이 수업은 단순 찬반이 아니라 통합사회1의 자연환경과 인간 생활, 시민의 권리, 환경 문제 해결 주체를 기준으로 개발과 보전의 조건을 따져 보는 활동이다.\n<empty-block/>\n## 핵심 개념\n---\n- 자연환경 / 생활환경\n- 시민의 권리\n- 지속가능성 / 개발 이익 / 환경 비용 동시에 고려하기\n<empty-block/>\n## 예상되는 토론 쟁점\n---\n- 찬성\n\t- 지역 경제 활성화와 일자리 창출\n\t- 교통·주거·문화 시설 개선\n\t- 낙후 지역 생활 여건 개선\n- 반대\n\t- 생태계 훼손과 생활환경 악화\n\t- 개발 이익과 피해 부담의 불균형\n\t- 단기 경제성 중심 의사결정의 위험\n<empty-block/>\n## 수업 흐름 설계\n---\n1. 배경 자료 읽기\n2. 성취기준과 연결되는 핵심 질문 확인\n3. 개인 입장 정리\n4. 모둠별 근거 카드 작성\n5. 찬반 토론\n6. 최종 입장문 작성\n7. 성취기준 도달 여부 자기 점검\n<empty-block/>\n## 학생 활동지 예시\n---\n### 1. 내 첫 입장\n- 나의 입장: □ 찬성 □ 반대 □ 조건부 찬성/반대\n- 이유:\n### 2. 근거 카드 만들기\n<table header-row=\"true\">\n<colgroup>\n<col width=\"151\">\n<col width=\"686\">\n</colgroup>\n<tr>\n<td>근거</td>\n<td>자료 또는 사례</td>\n</tr>\n<tr>\n<td>1</td>\n<td></td>\n</tr>\n<tr>\n<td>2</td>\n<td></td>\n</tr>\n<tr>\n<td>3</td>\n<td></td>\n</tr>\n</table>\n### 3. 반론 예상 하기\n- 찬성 / 반대 각각 작성할 수 있도록 충분히 칸 구성 필요\n<table header-row=\"true\">\n<colgroup>\n<col width=\"145.69444274902344\">\n<col width=\"689\">\n</colgroup>\n<tr>\n<td>반론</td>\n<td>나의 재반박 내용</td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n</tr>\n</table>\n### 4. 최종 입장문\n- 400\\~600자 내외로 작성\n\t- 필수 조건 : 핵심 주장, 근거 2개, 예상 반론 1개, 조건 또는 한계\n<empty-block/>\n## 평가 루브릭\n---\n<table header-row=\"true\">\n<colgroup>\n<col>\n<col width=\"347\">\n<col width=\"217.30555725097656\">\n<col width=\"262.05555725097656\">\n</colgroup>\n<tr>\n<td>기준</td>\n<td>우수</td>\n<td>보통</td>\n<td>보완 필요</td>\n</tr>\n<tr>\n<td>성취기준 연결</td>\n<td>조항의 핵심 수행을 활동에서 직접 수행함</td>\n<td>일부 연결되나 근거가 약함</td>\n<td>조항과 활동의 관련성이 불명확함</td>\n</tr>\n<tr>\n<td>근거 활용</td>\n<td>자료와 사례를 들어 주장을 뒷받침함</td>\n<td>근거는 있으나 해석이 부족함</td>\n<td>개인 의견 중심임</td>\n</tr>\n<tr>\n<td>쟁점 이해</td>\n<td>양쪽 입장과 조건을 균형 있게 이해함</td>\n<td>한쪽 입장 중심으로 이해함</td>\n<td>쟁점을 단순화함</td>\n</tr>\n<tr>\n<td>표현</td>\n<td>주장, 근거, 반론, 결론이 분명함</td>\n<td>구조는 있으나 일부 모호함</td>\n<td>글의 논리 구조가 약함</td>\n</tr>\n</table>",
+    "properties": {
+      "날짜": {
+        "id": "GikM",
+        "type": "date",
+        "date": {
+          "start": "2025-05-08",
+          "end": null,
+          "time_zone": null
+        }
+      },
+      "학기": {
+        "id": "%60uZh",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "25-2",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "25-2",
+            "href": null
+          }
+        ]
+      },
+      "다중 선택": {
+        "id": "f%3AUh",
+        "type": "multi_select",
+        "multi_select": []
+      },
+      "학년": {
+        "id": "fA%40%3F",
+        "type": "select",
+        "select": {
+          "id": "78462034-e79c-4b27-aff6-a5a78f4ba0de",
+          "name": "고1",
+          "color": "red"
+        }
+      },
+      "이름": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "“개발과 환경 보전 중 무엇을 우선할 수 있을지” 토론 계획안",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "“개발과 환경 보전 중 무엇을 우선할 수 있을지” 토론 계획안",
+            "href": null
+          }
+        ]
+      }
+    }
+  }
+]
