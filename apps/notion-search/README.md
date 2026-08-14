@@ -5,33 +5,35 @@ AI가 내용을 요약해서 보여주는 Streamlit 웹 서비스입니다.
 
 ## 전체 동작 흐름
 
+설계 문서: [docs/notion-search/design.md](../../docs/notion-search/design.md)
+
 ```text
 사용자 질문
       ↓
-query_classifier.py
-(질문 분석)
+query_classifier.py   질의 유형 판단 + 검색 조건 구성
+      ↓                                    QueryIntent
+mcp_client.py         데이터셋 전체 조회 (앱 시작 시 1회, 캐싱)
+      ↓                                    list[NotionPage]
+search.py             속성·본문·제목 병합 → 필터링 → 랭킹
+      ↓                                    list[PageMeta]
+summarizer.py         페이지별 요약 생성 (CLOVA)
       ↓
-mcp_client.py
-(Notion에서 페이지 검색)
-      ↓
-summarizer.py
-(GPT로 페이지 요약)
-      ↓
-Streamlit 화면 출력
+app.py                검색창 + 결과 요약 + 결과 리스트
 ```
 
 예시)
 
 ```
-사용자
-"3학년 식물 자료 찾아줘"
+"수학 자료 찾아줘"
 
-↓
-
-① 질문 분석 → 주제 검색
-② Notion 검색 → 관련 페이지 3개 조회
-③ GPT 요약
-④ 화면 출력
+① 질의 분석      → 속성 필터 (subject=수학)
+② 전체 조회      → 14건 (캐시 히트 시 0초)
+③ 필터링·랭킹    → 3건
+                   속성만으로는 1건. 본문 `- 과목: 공통수학1`과
+                   제목까지 폴백해서 3건이 된다.
+④ 요약 생성      → 카드마다 2~3문장
+⑤ 화면 출력      → "수학 자료 3건을 찾았습니다. 프로젝트 2건, 퀴즈 1건입니다.
+                    이 중 2건은 자료 생성 요청서입니다."
 ```
 
 ## 담당
@@ -41,22 +43,34 @@ Streamlit 화면 출력
 | `query_classifier.py` | 나 | 질의 유형 판단(주제/제목/속성) + QueryIntent 구성 |
 | `prompt.py` | 나 | 필터 추출/요약용 프롬프트 템플릿 |
 | `summarizer.py` | 나 | 검색 결과 페이지별 요약 생성 |
-| `mcp_client.py` | 팀원 | Notion MCP 서버 연결, 검색/본문 조회 tool call |
+| `search.py` | 나 | 속성·본문·제목 병합, 정규화, 필터링, 랭킹 |
+| `eval.py` | 나 | 골든셋 채점 (재현율/정확도/노이즈) |
+| `mcp_client.py` | 팀원 | Notion MCP 서버 연결, 전체 조회·캐싱, 응답 파싱 |
 | `llm_client.py` | 팀원 | LLM API 클라이언트 (가이드 기준 Claude API 예정) |
 | `app.py` | 공통 | Streamlit UI, 파이프라인 연결 |
 
 ## 모듈 간 계약
 
-`query_classifier.QueryIntent` (검색 조건) -> `mcp_client.search_pages()` -> `mcp_client.NotionPage` 목록
-(본문 포함) -> `summarizer.summarize_results()` -> 화면에 결과+요약 표시.
-
-```python
-QueryIntent(type="topic", keyword="식물")
-NotionPage(title="식물의 한살이", content="...")
+```
+classify_query(질의) -> QueryIntent
+fetch_all_pages()   -> list[NotionPage]      # 데이터셋 전체, 앱 시작 시 1회
+search(intent, pages) -> list[PageMeta]      # 필터링·랭킹된 결과
+summarize_results(...) -> 화면 표시
 ```
 
-각자 이 두 데이터클래스의 필드만 맞춰두면 서로의 구현이 끝나기 전에도 독립적으로 개발/테스트할 수 있다.
-정확한 필드는 `query_classifier.py`, `mcp_client.py` 참고.
+**`mcp_client`는 검색하지 않고 전체를 읽어오기만 한다.** 원래 `search_pages(intent)`로 잡았다가
+바꾼 이유는 세 가지다.
+
+- `API-post-search`는 **제목만** 검색한다. "토론"으로 찾으면 제목에 그 단어가 없는
+  `근대화 과정에서 외세의 수용은 불가피했는가?`가 빠진다.
+- 데이터가 **14건뿐**이라 전부 메모리에 올려도 부담이 없다.
+- 속성이 절반쯤 비어 있어(과목 7/14, 학년 6/14 누락) **속성 -> 본문 -> 제목** 순으로
+  폴백해야 하는데, 그러려면 데이터가 손에 있어야 한다.
+
+데이터가 크게 늘면 서버 사이드 필터링으로 되돌려야 한다.
+
+`QueryIntent`(query_classifier)와 `NotionPage`(mcp_client) 두 데이터클래스의 필드만 맞춰두면
+서로의 구현이 끝나기 전에도 독립적으로 개발/테스트할 수 있다.
 
 ## 실행 방법
 
@@ -110,10 +124,25 @@ pip install -r requirements.txt
 python manual_mcp_test.py "검색어"
 ```
 
-## 골든셋
+## 골든셋 · 평가
 
-질의 유형별(주제/제목/속성) 골든셋은 [`docs/notion-search/golden-set.md`](../../docs/notion-search/golden-set.md)에 둔다.
-샘플 데이터셋(14개 페이지) 실제 조회 결과를 기반으로 작성함.
+| 파일 | 용도 |
+|---|---|
+| [`docs/notion-search/golden-set.md`](../../docs/notion-search/golden-set.md) | 사람이 읽는 표 (가이드 Day2 Step3 산출물) |
+| [`docs/notion-search/golden-set.jsonl`](../../docs/notion-search/golden-set.jsonl) | 채점용. 케이스당 한 줄 |
+| `fixtures/pages.json` | Notion 응답 스냅샷. eval을 오프라인/무토큰으로 돌리기 위한 것 |
+
+```bash
+python eval.py              # 스냅샷으로 채점 (0.1초, 토큰 불필요)
+python eval.py --refresh    # 스냅샷 다시 뜨고 채점
+python eval.py --case topic-01
+```
+
+**지표** — 재현율은 기대 결과를 놓치지 않았는지, 정확도는 군더더기가 없는지,
+노이즈는 `must_not`에 적은 페이지가 섞였는지를 본다. 전부 만점이어야 PASS다.
+
+jsonl에는 markdown 표에 없는 케이스가 더 있다 — 결과 0건, 노이즈, 복합 필터, 순위.
+케이스를 고칠 때는 **markdown과 jsonl 양쪽을** 수정한다.
 
 ## 검색 결과 없음/모호할 때 처리 정책 (결정: 방식 B)
 
