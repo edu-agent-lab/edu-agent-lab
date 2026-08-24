@@ -83,6 +83,7 @@ class Result:
     precision: float
     top_ok: bool | None
     type_ok: bool | None = None  # --classify 모드에서만 채워진다
+    degraded: bool = False  # LLM을 못 불러 규칙 폴백으로 분류된 케이스
 
     @property
     def passed(self) -> bool:
@@ -146,6 +147,7 @@ def run(
         hits = search(intent, pages)
         result = score(case, [m.title for m in hits])
         result.type_ok = type_ok
+        result.degraded = intent.degraded
         results.append(result)
     return results
 
@@ -194,6 +196,12 @@ def report(results: list[Result], *, verbose: bool) -> None:
     if typed:
         ok = sum(r.type_ok for r in typed)
         print(f"{'':12} {'':7} {'':7} {'':7}  분류기 유형 정확도 {ok}/{len(typed)}")
+    degraded = sum(r.degraded for r in results)
+    if degraded:
+        print(
+            f"{'':12} {'':7} {'':7} {'':7}  "
+            f"LLM 폴백 {degraded}건 - 분류기 점수를 신뢰할 수 없음"
+        )
     print("=" * width)
 
 

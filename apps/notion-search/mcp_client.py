@@ -11,6 +11,8 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import re
+import time
 from dataclasses import dataclass
 from typing import Any
 
@@ -94,6 +96,86 @@ def _payload(result: Any) -> dict:
     return json.loads(result.content[0].text)
 
 
+# --- 재시도 정책 (Day3 Step6 확정) -----------------------------------------
+# Notion API는 초당 약 3회. fetch_all_pages()가 목록 1회 + 본문 N회를 순차로 부르는데,
+# 14건 기준 왕복만으로도 초당 3회에 근접해서 여유가 크지 않다.
+#
+# 가이드 예시처럼 매 호출에 고정 sleep을 넣는 대신, 직전 호출로부터 흐른 시간을 재서
+# 모자란 만큼만 쉰다. 왕복이 이미 느리면 추가 대기가 0이 되므로 손해 볼 일이 없다.
+MIN_CALL_INTERVAL = 1 / 3
+
+MAX_RETRIES = 3
+BACKOFF_SECONDS = (0.5, 1.0, 2.0)
+
+# 서버가 Retry-After로 비정상적으로 긴 값을 주면 그대로 기다리지 않는다.
+# 첫 화면이 그만큼 멈추느니 실패로 끝내고 사용자에게 알리는 편이 낫다.
+MAX_RETRY_WAIT = 10.0
+
+# 다시 걸면 될 만한 오류만 재시도한다. 401(토큰 문제)이나 404는 몇 번을 걸어도 같다.
+_RETRYABLE = re.compile(
+    r"429|rate[\s_-]?limit|50[234]|timeout|timed out|ECONNRESET|socket hang up",
+    re.IGNORECASE,
+)
+_RETRY_AFTER = re.compile(r"retry[\s_-]?after\D{0,4}(\d+(?:\.\d+)?)", re.IGNORECASE)
+
+
+class MCPCallError(RuntimeError):
+    """MCP tool 호출이 재시도 후에도 실패했다."""
+
+
+_last_call_at = 0.0
+
+
+async def _throttle() -> None:
+    """직전 호출과의 간격이 좁으면 모자란 만큼만 쉬어간다."""
+    global _last_call_at
+    gap = time.monotonic() - _last_call_at
+    if gap < MIN_CALL_INTERVAL:
+        await asyncio.sleep(MIN_CALL_INTERVAL - gap)
+    _last_call_at = time.monotonic()
+
+
+def _error_text(result: Any) -> str | None:
+    """tool 응답이 에러면 그 내용을, 정상이면 None을 돌려준다.
+
+    MCP는 tool 실패를 예외가 아니라 isError 플래그로 알려준다. 그대로 _payload()에
+    넘기면 에러 메시지를 JSON으로 파싱하려다 엉뚱한 곳에서 터진다.
+    """
+    if not getattr(result, "isError", False):
+        return None
+    parts = [getattr(c, "text", "") for c in (result.content or [])]
+    return " ".join(p for p in parts if p) or "알 수 없는 오류"
+
+
+def _wait_seconds(error: str, attempt: int) -> float:
+    """서버가 알려준 Retry-After를 우선하고, 없으면 정해둔 백오프를 쓴다."""
+    matched = _RETRY_AFTER.search(error)
+    if matched:
+        return min(float(matched.group(1)), MAX_RETRY_WAIT)
+    return BACKOFF_SECONDS[attempt]
+
+
+async def _call(session: ClientSession, tool: str, arguments: dict) -> dict:
+    """tool을 호출해 JSON 페이로드를 돌려준다. 일시적인 실패는 재시도한다."""
+    error = ""
+    for attempt in range(MAX_RETRIES + 1):
+        await _throttle()
+        try:
+            result = await session.call_tool(tool, arguments=arguments)
+            failed = _error_text(result)
+            if failed is None:
+                return _payload(result)
+            error = failed
+        except Exception as exc:  # 전송 계층 오류도 같은 정책으로 다룬다
+            error = f"{type(exc).__name__}: {exc}"
+
+        if attempt == MAX_RETRIES or not _RETRYABLE.search(error):
+            break
+        await asyncio.sleep(_wait_seconds(error, attempt))
+
+    raise MCPCallError(f"{tool} 호출 실패 ({attempt + 1}회 시도): {error[:300]}")
+
+
 async def _fetch_all() -> list[NotionPage]:
     async with stdio_client(_server_params()) as (read, write):
         async with ClientSession(read, write) as session:
@@ -108,21 +190,17 @@ async def _fetch_all() -> list[NotionPage]:
                 }
                 if cursor:
                     args["start_cursor"] = cursor
-                data = _payload(await session.call_tool(TOOL_QUERY, arguments=args))
+                data = await _call(session, TOOL_QUERY, args)
                 rows.extend(data["results"])
                 if not data.get("has_more"):
                     break
                 cursor = data["next_cursor"]
 
-            # 본문은 페이지마다 따로 조회해야 한다. 14건 순차 호출이면
-            # rate limit(분당 180)에 여유가 있다.
+            # 본문은 페이지마다 따로 조회해야 한다. 호출 간격과 429는 _call()이
+            # 함께 처리하므로 여기서는 순서대로 부르기만 한다.
             pages = []
             for row in rows:
-                md = _payload(
-                    await session.call_tool(
-                        TOOL_MARKDOWN, arguments={"page_id": row["id"]}
-                    )
-                )
+                md = await _call(session, TOOL_MARKDOWN, {"page_id": row["id"]})
                 pages.append(
                     NotionPage(
                         page_id=row["id"],
@@ -139,7 +217,11 @@ _cache: list[NotionPage] | None = None
 
 
 def fetch_all_pages(refresh: bool = False) -> list[NotionPage]:
-    """데이터셋 전체를 읽어 캐싱한다. 두 번째 호출부터는 네트워크를 타지 않는다."""
+    """데이터셋 전체를 읽어 캐싱한다. 두 번째 호출부터는 네트워크를 타지 않는다.
+
+    재시도로도 복구되지 않으면 MCPCallError를 올린다. 호출부에서 사용자에게 보여줄
+    메시지로 바꿔야 한다.
+    """
     global _cache
     if _cache is None or refresh:
         _cache = asyncio.run(_fetch_all())

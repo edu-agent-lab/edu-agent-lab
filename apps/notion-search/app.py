@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import streamlit as st
 
-from mcp_client import fetch_all_pages
+from mcp_client import MCPCallError, fetch_all_pages
 from query_classifier import classify_query
 from search import PageMeta, describe_results, search
 from summarizer import summarize_text
@@ -91,7 +91,16 @@ if not query:
 
 # --- 검색 ---------------------------------------------------------------
 
-pages = load_pages()
+try:
+    pages = load_pages()
+except MCPCallError as exc:
+    st.error("Notion에서 자료를 읽지 못했습니다.")
+    st.caption(str(exc))
+    st.info("NOTION_TOKEN이 유효한지, Node.js가 설치되어 있는지 확인해 주세요.")
+    st.stop()
+except Exception as exc:
+    st.error(f"Notion 연결에 실패했습니다: {exc}")
+    st.stop()
 
 with st.spinner("검색 중..."):
     try:
@@ -100,6 +109,10 @@ with st.spinner("검색 중..."):
         st.error(f"질의를 이해하지 못했습니다: {exc}")
         st.stop()
     hits = search(intent, pages)
+
+if intent.degraded:
+    st.warning("AI 질의 분석을 쓸 수 없어 단순 키워드 검색으로 대체했습니다. "
+               "학년·과목·날짜 조건은 반영되지 않습니다.")
 
 # --- 검색 결과 요약 ------------------------------------------------------
 
