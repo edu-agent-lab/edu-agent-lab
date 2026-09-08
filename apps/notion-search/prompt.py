@@ -3,9 +3,10 @@
 query_classifier.py, summarizer.py에서 이 템플릿들을 가져다 쓰고, 실제 호출은
 llm_client.generate_completion()에 위임한다.
 
-JSON을 요구하는 프롬프트가 둘 있는데, 경량 모델(HCX-DASH-002)은 JSON을 코드블록으로
-감싸거나 앞뒤에 설명을 붙이는 일이 잦다. 그래서 json.loads()를 직접 부르지 말고
-extract_json()을 쓴다.
+JSON을 요구하는 프롬프트가 둘 있는데, 모델이 JSON을 코드블록으로 감싸거나 앞뒤에
+설명을 붙이는 일이 잦다. 그래서 json.loads()를 직접 부르지 말고 extract_json()을 쓴다.
+CLOVA(HCX-DASH-002)에서 특히 심했고 gpt-5-mini에서는 덜하지만, 방어를 걷어내는 건
+골든셋으로 확인한 뒤에 할 일이다.
 """
 
 from __future__ import annotations

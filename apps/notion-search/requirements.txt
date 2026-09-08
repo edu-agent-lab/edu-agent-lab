@@ -2,5 +2,5 @@ streamlit
 python-dotenv
 mcp
 
-# LLM: CLOVA Studio(HyperCLOVA X). OpenAI 호환 엔드포인트라 openai SDK를 그대로 쓴다.
+# LLM: OpenAI (gpt-5-mini).
 openai

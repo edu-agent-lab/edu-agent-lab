@@ -3,7 +3,7 @@
 ## 프로젝트 개요
 
 교사가 자연어로("토론 수업 자료 찾아줘", "고1 수학 자료 찾아줘") 질문하면, MCP로 연결된
-Notion 팀스페이스(수업 자료 14건)에서 관련 페이지를 찾아 CLOVA Studio로 페이지별 요약을
+Notion 팀스페이스(수업 자료 14건)에서 관련 페이지를 찾아 OpenAI(gpt-5-mini)로 페이지별 요약을
 생성해 보여주는 Streamlit 웹 서비스입니다. 질의 유형(제목/주제/속성)에 따라 다르게 매칭하고,
 결과가 여러 건이면 화면 맨 위에 규칙 기반으로 만든 요약 문단을 먼저 보여줍니다. 골든셋
 21건 기준 검색·분류 정확도 100%를 확인했습니다 (아래 "골든셋 · 평가" 참고).
@@ -21,7 +21,7 @@ mcp_client.py         데이터셋 전체 조회 (앱 시작 시 1회, 캐싱)
       ↓                                    list[NotionPage]
 search.py             속성·본문·제목 병합 → 필터링 → 랭킹
       ↓                                    list[PageMeta]
-summarizer.py         페이지별 요약 생성 (CLOVA)
+summarizer.py         페이지별 요약 생성 (OpenAI)
       ↓
 app.py                검색창 + 결과 요약 + 결과 리스트
 ```
@@ -51,7 +51,7 @@ app.py                검색창 + 결과 요약 + 결과 리스트
 | `search.py` | 나 | 속성·본문·제목 병합, 정규화, 필터링, 랭킹 |
 | `eval.py` | 나 | 골든셋 채점 (재현율/정확도/노이즈) |
 | `mcp_client.py` | 팀원 | Notion MCP 서버 연결, 전체 조회·캐싱, 응답 파싱 |
-| `llm_client.py` | 팀원 | LLM API 클라이언트 (CLOVA Studio HCX-DASH-002, OpenAI 호환 엔드포인트) |
+| `llm_client.py` | 팀원 | LLM API 클라이언트 (OpenAI gpt-5-mini) + 재시도 |
 | `app.py` | 공통 | Streamlit UI, 파이프라인 연결 |
 
 ## 모듈 간 계약
