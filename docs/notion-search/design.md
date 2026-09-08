@@ -191,14 +191,21 @@ LLM을 부르지 않는다. 필요한 정보(자료 유형, 과목, 날짜, 요�
 
 ## Step 5. 기술 스택 확정
 
-> **팀 논의 전.** 현재 사용 중인 것은 아래와 같지만 확정된 결정은 아니다.
->
-> | 영역 | 현재 | 비고 |
-> |---|---|---|
-> | 프론트엔드 | Streamlit | |
-> | 백엔드 | Python 3.10 | |
-> | MCP 클라이언트 | `mcp` SDK (stdio) | 로컬 서버, Day1 실측으로 결정 |
-> | LLM | CLOVA Studio HCX-DASH-002 | OpenAI 호환 엔드포인트 |
+| 영역 | 확정 | 비고 |
+|---|---|---|
+| 프론트엔드 | Streamlit | 검색창+리스트만 필요해 빠른 구현 우선 |
+| 백엔드 | Python 3.10 | |
+| MCP 클라이언트 | `mcp` SDK (stdio) | 로컬 서버(`@notionhq/notion-mcp-server`), Day1 실측으로 결정 |
+| LLM | CLOVA Studio HCX-DASH-002 (OpenAI 호환 엔드포인트) | 가이드 초안(Claude API)에서 변경. 채택 이유는 아래 |
+
+**LLM을 Claude API가 아니라 CLOVA Studio로 결정한 이유**
+
+- OpenAI 호환 엔드포인트라 `openai` SDK를 `base_url`만 바꿔 그대로 쓴다 — 다른 제공자로
+  갈아탈 때도 `llm_client.py` 한 파일만 고치면 되는 구조라 전환 비용이 낮다.
+- 분류(JSON 추출)·요약 둘 다 지연시간이 중요한 짧은 텍스트 작업이라 경량 모델로 충분하다고
+  판단. 대신 JSON 파싱 실패에 대한 방어(`prompt.extract_json`)를 코드 쪽에서 흡수한다.
+- `temperature=0`으로 고정해 분류 결과 재현성을 확보 — 골든셋 채점이 매 실행마다
+  달라지면 점수를 신뢰할 수 없기 때문.
 
 ---
 

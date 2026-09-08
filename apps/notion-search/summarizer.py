@@ -31,7 +31,12 @@ def summarize_text(title: str, content: str) -> str:
     PageMeta는 해시가 안 돼서 Streamlit 캐시 키로 못 쓴다. 캐싱하는 쪽이
     문자열만 넘길 수 있도록 이 형태를 따로 둔다.
     """
-    prompt = SUMMARIZE_PAGE_PROMPT.format(title=title, content=clean_content(content))
+    cleaned = clean_content(content)
+    if not cleaned:
+        # 본문이 없으면 LLM이 제목만 보고 내용을 지어내는 걸 실제로 확인했다
+        # (Day6 노이즈 테스트). 호출 자체를 막는 게 프롬프트로 막는 것보다 확실하다.
+        return "본문이 비어 있어 요약할 수 없습니다."
+    prompt = SUMMARIZE_PAGE_PROMPT.format(title=title, content=cleaned)
     return generate_completion(prompt)
 
 
