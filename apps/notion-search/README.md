@@ -60,7 +60,7 @@ app.py                검색창 + 결과 요약 + 결과 리스트
 classify_query(질의) -> QueryIntent
 fetch_all_pages()   -> list[NotionPage]      # 데이터셋 전체, 앱 시작 시 1회
 search(intent, pages) -> list[PageMeta]      # 필터링·랭킹된 결과
-summarize_results(...) -> 화면 표시
+summarize_text(title, content) -> str   # 페이지 1건 요약, app.py가 카드마다 호출
 ```
 
 **`mcp_client`는 검색하지 않고 전체를 읽어오기만 한다.** 원래 `search_pages(intent)`로 잡았다가

@@ -20,6 +20,8 @@ from dotenv import load_dotenv
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
+from retry import backoff_delay
+
 load_dotenv()
 
 # 실습용 데이터셋 DB. Notion에서 데이터셋을 다시 복제하면 이 값도 바뀐다.
@@ -105,7 +107,6 @@ def _payload(result: Any) -> dict:
 MIN_CALL_INTERVAL = 1 / 3
 
 MAX_RETRIES = 3
-BACKOFF_SECONDS = (0.5, 1.0, 2.0)
 
 # 서버가 Retry-After로 비정상적으로 긴 값을 주면 그대로 기다리지 않는다.
 # 첫 화면이 그만큼 멈추느니 실패로 끝내고 사용자에게 알리는 편이 낫다.
@@ -138,21 +139,23 @@ async def _throttle() -> None:
 def _error_text(result: Any) -> str | None:
     """tool 응답이 에러면 그 내용을, 정상이면 None을 돌려준다.
 
-    MCP는 tool 실패를 예외가 아니라 isError 플래그로 알려준다. 그대로 _payload()에
+    MCP는 tool 실패를 예외가 아니라 is_error 플래그로 알려준다. 그대로 _payload()에
     넘기면 에러 메시지를 JSON으로 파싱하려다 엉뚱한 곳에서 터진다.
+    (mcp SDK 1.x에서는 isError였고 2.x에서 is_error로 바뀌었다. requirements가 2.x로
+    고정돼 있으니 그쪽만 본다.)
     """
-    if not getattr(result, "isError", False):
+    if not getattr(result, "is_error", False):
         return None
     parts = [getattr(c, "text", "") for c in (result.content or [])]
     return " ".join(p for p in parts if p) or "알 수 없는 오류"
 
 
 def _wait_seconds(error: str, attempt: int) -> float:
-    """서버가 알려준 Retry-After를 우선하고, 없으면 정해둔 백오프를 쓴다."""
+    """서버가 알려준 Retry-After를 우선하고, 없으면 공용 지수 백오프를 쓴다."""
     matched = _RETRY_AFTER.search(error)
     if matched:
         return min(float(matched.group(1)), MAX_RETRY_WAIT)
-    return BACKOFF_SECONDS[attempt]
+    return backoff_delay(attempt)
 
 
 async def _call(session: ClientSession, tool: str, arguments: dict) -> dict:

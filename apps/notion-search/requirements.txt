@@ -1,6 +1,9 @@
-streamlit
-python-dotenv
-mcp
+# Python 3.11 기준. 2026-09-13에 설치된 버전으로 고정 (팀원 간 API 불일치 방지).
+# 올릴 때는 mcp_client._error_text()의 is_error 같은 SDK 필드명이 바뀌지 않았는지
+# eval.py --live로 한 번 확인할 것.
+streamlit==1.63.0
+python-dotenv==1.2.3
+mcp==2.2.0
 
 # LLM: OpenAI (gpt-5-mini).
-openai
+openai==3.13.0
