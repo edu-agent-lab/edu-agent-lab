@@ -36,6 +36,26 @@ RE_3 = re.compile(r"^3\.\s*교수")
 RE_GA = re.compile(r"^가\.\s*내용\s*체계")
 RE_NA = re.compile(r"^나\.\s*성취기준")
 
+# 성취기준 코드 앞자리 숫자 -> 학년(군). 2015 개정부터 이어진 국가교육과정 코드 표기 관행으로,
+# 이번에 크롤링한 NCIC 데이터 자체에서 "이게 그 뜻이다"라고 명시한 근거를 찾지는 못했다
+# (초등학교 2/4/6은 실제 학년군 브라켓과 대조해 확인함, 9/10/12는 일반적으로 알려진 관례).
+CODE_PREFIX_GRADE = {
+    "2": "초등학교 1~2학년",
+    "4": "초등학교 3~4학년",
+    "6": "초등학교 5~6학년",
+    "9": "중학교 1~3학년",
+    "10": "고등학교 공통과목(1학년)",
+    "12": "고등학교 선택과목(2~3학년)",
+}
+CODE_PREFIX_RE = re.compile(r"^0*(\d+)")
+
+
+def infer_grade_band_from_code(code):
+    m = CODE_PREFIX_RE.match(code)
+    if not m:
+        return None
+    return CODE_PREFIX_GRADE.get(m.group(1))
+
 
 def get_children(sess, node):
     return node_list(
@@ -86,7 +106,7 @@ def crawl_achievement_leaf(sess, csrf, node, ctx, writer, errors):
         errors.append({"ctx": ctx, "node": node["title"], "error": str(e)})
         return
 
-    grade_band = node["title"] if node["title"].startswith("[") else None
+    explicit_grade_band = node["title"] if node["title"].startswith("[") else None
 
     # 부모 폴더가 "공통수학1, 공통수학2"처럼 여러 과목을 묶고 있어도,
     # 리프 제목이 "나. 성취기준 - 공통수학1"이면 그 과목명으로 course를 좁힌다.
@@ -100,12 +120,19 @@ def crawl_achievement_leaf(sess, csrf, node, ctx, writer, errors):
 
     for u in units:
         for std in u["standards"]:
+            if explicit_grade_band:
+                grade_band, grade_band_source = explicit_grade_band, "explicit"
+            else:
+                inferred = infer_grade_band_from_code(std["code"])
+                grade_band, grade_band_source = inferred, ("inferred_from_code" if inferred else None)
+
             record = {
                 "doc_type": "achievement_standard",
                 "school_level": ctx["school_level"],
                 "subject": ctx["subject"],
                 "course": ctx["course"],
                 "grade_band": grade_band,
+                "grade_band_source": grade_band_source,
                 "area": u["unit_title"],
                 "code": std["code"],
                 "content": std["content"],
