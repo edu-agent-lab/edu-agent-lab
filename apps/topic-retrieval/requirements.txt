@@ -1,0 +1,8 @@
+# Python 3.11 기준. notion-search 앱과 버전 맞춤(OpenAI 키/패턴 재사용).
+python-dotenv==1.2.3
+openai==3.13.0
+
+# 한국어 형태소 분석 (조사 제거 후 키워드 추출용). 순수 파이썬 휠이라 JVM 불필요.
+kiwipiepy==0.20.4
+
+numpy==2.2.1
