@@ -1,0 +1,43 @@
+# topic-retrieval (실험용)
+
+`experiment/topic-retrieval` 브랜치 전용. 팀과 아직 합의 전인 개인 실험이라 여기서만 건드린다.
+
+사용자가 학년/과목/주제(자유 문장)를 주면, `ncic-crawler`가 만든
+`ncic_2022_rag.jsonl`에서 관련 성취기준을 찾는 검색 방식을 테스트하는 스크립트 모음.
+
+## 검색 방식
+
+1. **슬롯 필터(정확 매칭)**: 학년/과목으로 후보를 먼저 좁힌다 (`data_loader.filter_by_slots`)
+2. **키워드 검색**: 주제 문장을 형태소 분석(kiwipiepy)해 명사 키워드를 뽑고, 그 키워드가
+   등장하는 성취기준을 찾는다 (`keyword_search.py`)
+3. **임베딩 검색**: OpenAI 임베딩으로 주제와 성취기준 간 코사인 유사도를 계산한다
+   (`embedding_search.py`) — 표현이 달라도(예: "환경 보전" vs 원문 "지속가능한 발전")
+   찾을 수 있음
+4. **하이브리드**: 위 두 결과를 RRF(Reciprocal Rank Fusion)로 합쳐서 최종 순위를 매긴다
+   (`hybrid_search.py`) — 한쪽만 성공했다고 다른 쪽을 생략하지 않고 항상 둘 다 돌려서 합산
+
+## 준비
+
+```bash
+pip install -r requirements.txt
+cp .env.example .env   # OPENAI_API_KEY 채우기
+python build_index.py  # 성취기준 전체(5700여건)를 한 번 임베딩해서 index/에 캐싱
+```
+
+`build_index.py`는 OpenAI API를 호출하므로 비용이 든다(text-embedding-3-small 기준
+전체 한 번 돌리는 데 매우 저렴함, 대략 $0.03 미만). 캐시는 `.gitignore`되어 있어
+커밋되지 않으니, 다시 받으면 각자 한 번씩 돌려야 한다.
+
+## 실행
+
+```bash
+python search.py --school_level 고등학교 --subject 사회 \
+    --topic "개발과 환경 보전 중 무엇을 우선할 것인가"
+```
+
+## 아직 안 한 것 / 다음에 볼 것
+
+- RRF 대신 가중합 등 다른 결합 방식과 비교
+- top_k, RRF_K 같은 하이퍼파라미터 튜닝
+- teaching_assessment/content_system/purpose_goals도 같은 방식으로 검색할지 결정
+- 검색 품질 평가용 골든셋 준비 (지금은 눈으로만 확인)
