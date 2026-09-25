@@ -1,20 +1,43 @@
+{"ctx": {"school_level": "초등학교", "subject": "사회", "course": "사회", "openYear": "2022"}, "node": "가. 내용 체계", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "중학교", "subject": "한문", "course": "한문", "openYear": "2022"}, "node": "가. 내용 체계", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "중학교", "subject": "한문", "course": "한문", "openYear": "2022"}, "node": "나. 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "수학", "course": "공통수학1, 공통수학2", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "사회", "course": "세계사", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "사회", "course": "세계사", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "사회", "course": "사회와 문화", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "과학", "course": "과학의 역사와 문화", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "과학", "course": "기후변화와 환경생태", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "과학", "course": "기후변화와 환경생태", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "프랑스어 회화", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "프랑스어 회화", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "프랑스어 회화", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "러시아 문화", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "심화 아랍어", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "아랍어 회화", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "아랍어 회화", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "아랍 문화", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "아랍 문화", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "제2외국어", "course": "베트남어", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "한문", "course": "한문 고전 읽기", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "교양", "course": "생태와 환경", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "교양", "course": "인간과 철학", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "교양", "course": "논리와 사고", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "교양", "course": "인간과 심리", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "교양", "course": "교육의 이해", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "교양", "course": "삶과 종교", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "교양", "course": "보건", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "교양", "course": "보건", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "교양", "course": "인간과 경제활동", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "교양", "course": "인간과 경제활동", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "교양", "course": "논술", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "전문 수학", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "이산 수학", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "고급 대수", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "고급 기하", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "고급 물리학", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "고급 화학", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "고급 생명과학", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "고급 지구과학", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "고급 지구과학", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "화학 실험", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "과학 계열 선택 과목", "course": "지구과학 실험", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
@@ -24,122 +47,172 @@
 {"ctx": {"school_level": "고등학교", "subject": "체육 계열 선택 과목", "course": "체조", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "체육 계열 선택 과목", "course": "수상 스포츠", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "체육 계열 선택 과목", "course": "심화 체육 전공 실기", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "체육 계열 선택 과목", "course": "스포츠 경기 체력", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "체육 계열 선택 과목", "course": "스포츠 경기 체력", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "체육 계열 선택 과목", "course": "스포츠 경기 기술", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "체육 계열 선택 과목", "course": "스포츠 교육", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "체육 계열 선택 과목", "course": "스포츠 행정 및 경영", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "체육 계열 선택 과목", "course": "스포츠 행정 및 경영", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "예술 계열 선택 과목", "course": "음악 이론", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "예술 계열 선택 과목", "course": "음악사", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "예술 계열 선택 과목", "course": "합창·합주", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "예술 계열 선택 과목", "course": "음악 공연 실습", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "예술 계열 선택 과목", "course": "드로잉", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "예술 계열 선택 과목", "course": "드로잉", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "예술 계열 선택 과목", "course": "미술사", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "예술 계열 선택 과목", "course": "촬영·조명", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "예술 계열 선택 과목", "course": "사진의 이해", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "1. 성공적인 직업 생활", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "13. 제품 디자인", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "14. 디지털 디자인", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 노무 관리", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 노무 관리", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "12. 인체 구조와 기능", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "12. 인체 구조와 기능", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "13. 간호의 기초", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "8. 만화 콘텐츠 제작", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 캐릭터 제작", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 캐릭터 제작", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 레저 서비스 일반", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 레저 서비스 일반", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 레저 서비스 일반", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "17. 제빵", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "17. 제빵", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "1. 성공적인 직업 생활", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "2. 노동 인권과 산업 안전 보건", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "2. 노동 인권과 산업 안전 보건", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 디지털과 직업 생활", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 디지털과 직업 생활", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 디지털과 직업 생활", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "1. 공업 일반", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "1. 공업 일반", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "2. 기초 제도", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "2. 기초 제도", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 건축 일반", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 건축 일반", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "4. 건축 기초 실습", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "4. 건축 기초 실습", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "4. 건축 기초 실습", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "5. 건축 도면 해석과 제도", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "5. 건축 도면 해석과 제도", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 토목 일반", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "7. 토목 도면 해석과 제도", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "7. 토목 도면 해석과 제도", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "8. 건설 재료", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 역학 기초", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 역학 기초", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "10. 토질·수리", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "10. 토질·수리", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "10. 토질·수리", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "11. 측량 기초", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "11. 측량 기초", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "2. 건축 목공 시공", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 건축 마감 시공", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 건축 마감 시공", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 건축 마감 시공", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "4. 건축 도장 시공", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "4. 건축 도장 시공", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "5. 건축 설계", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "5. 건축 설계", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 토목 설계", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 토목 설계", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 토목 설계", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "7. 토목 시공", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "7. 토목 시공", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "7. 토목 시공", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "2. 노동 인권과 산업 안전 보건", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 디지털과 직업 생활", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 디지털과 직업 생활", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "1. 기계 제도", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "1. 기계 제도", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "2. 기계 기초 공작", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "2. 기계 기초 공작", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 기계 기초 역학", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "7. 냉동 공조 일반", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "8. 유체 기계", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 산업 설비", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 산업 설비", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 산업 설비", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "10. 자동차 기관", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "10. 자동차 기관", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "12. 자동차 전기·전자 제어", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "13. 선박 이론", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "15. 선박 건조", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "17. 항공기 일반", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "18. 항공기 실무 기초", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "18. 항공기 실무 기초", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "18. 항공기 실무 기초", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "2. 기계 제어 설계", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "4. 밀링 가공", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "4. 밀링 가공", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "5. 연삭 가공", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "7. 측정", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "8. 성형 가공", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "8. 성형 가공", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 특수 가공", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "10. 기계 수동 조립", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "13. 건설 광산 기계 설치·정비", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "14. 공작 기계 설치·정비", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "15. 승강기 설치·정비", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "15. 승강기 설치·정비", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "22. 프레스 금형 설계", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "23. 프레스 금형 제작", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "23. 프레스 금형 제작", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "23. 프레스 금형 제작", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "24. 프레스 금형 품질 관리", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "25. 프레스 금형 조립", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "26. 배관 시공", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "27. 냉동 공조 설계", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "28. 냉동 공조 유지 보수 관리", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "30. 판금·제관", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "30. 판금·제관", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "30. 판금·제관", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "32. 이산화탄소·가스 메탈 아크 용접", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "32. 이산화탄소·가스 메탈 아크 용접", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "33. 가스 텅스텐 아크 용접", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "33. 가스 텅스텐 아크 용접", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "33. 가스 텅스텐 아크 용접", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "35. 보일러 장치 설치", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "35. 보일러 장치 설치", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "36. 냉동 공조 장치 설치", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "36. 냉동 공조 장치 설치", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "36. 냉동 공조 장치 설치", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "37. 자동차 전기·전자 장치 정비", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "37. 자동차 전기·전자 장치 정비", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "38. 자동차 엔진 정비", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "38. 자동차 엔진 정비", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "39. 자동차 섀시 정비", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "39. 자동차 섀시 정비", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "40. 자동차 차체 정비", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "40. 자동차 차체 정비", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "41. 자동차 도장", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "41. 자동차 도장", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "41. 자동차 도장", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "42. 자동차 정비 검사", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "42. 자동차 정비 검사", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "43. 자동차 튜닝", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "43. 자동차 튜닝", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "43. 자동차 튜닝", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "44. 선체 조립", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "44. 선체 조립", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "45. 전장 생산", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "47. 항공기 기체 제작", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "5. 고분자 제품 제조", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 바이오 의약품 제조", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 바이오 의약품 제조", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "12. 전기 철도 시공", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "12. 전기 철도 시공", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 무선 통신 구축·운용", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "3. 무선 통신 구축·운용", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "4. 초고속망 서비스 관리 운용", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "4. 초고속망 서비스 관리 운용", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 생명 공학 기술", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "9. 생명 공학 기술", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "10. 농업 정보 관리", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "10. 농업 정보 관리", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "7. 바이오 화학 제품 제조", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "7. 바이오 화학 제품 제조", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "8. 화장품 제조", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "5. 전기·전자 일반", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 전자 회로", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 전자 회로", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "31. 반도체 제조", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "31. 반도체 제조", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "31. 반도체 제조", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "5. 응용 프로그래밍 개발", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "5. 응용 프로그래밍 개발", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 응용 프로그래밍 화면 구현", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "1. 성공적인 직업 생활", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "11. 화공 안전 관리", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "11. 화공 안전 관리", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "27. 농업용 전기·전자", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "27. 농업용 전기·전자", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "27. 농업용 전기·전자", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "31. 농업용 기계 설치·정비", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "31. 농업용 기계 설치·정비", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "32. 농업 생산 환경 조성", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "32. 농업 생산 환경 조성", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "17. 기관사 직무", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "17. 기관사 직무", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "18. 선박 기관 정비", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "18. 선박 기관 정비", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
-{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "19. 선박 보조 기계 정비", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "32. 농업 생산 환경 조성", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "8. 수산 생물", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "Command '['curl', '-s', '-A', 'Mozilla/5.0 (compatible; ncic-crawler/1.0)', '-b', '/var/folders/rq/mb6f2whj5gl3426pr3nv27c00000gn/T/ncic_cookies_bnpfdjv1.txt', '-c', '/var/folders/rq/mb6f2whj5gl3426pr3nv27c00000gn/T/ncic_cookies_bnpfdjv1.txt', '--data', '_csrf=466e08e5-8208-41fa-81ae-2d8805693c73&openYear=2022&seq=10073718&location=&orgType=ogi4&menuType=1&nationCd=1000', 'https://ncic.re.kr/inv/org/view.do']' timed out after 30 seconds"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 발명과 디자인", "openYear": "2022"}, "node": "1. 성격 및 목표", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 발명과 디자인", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "고등학교", "subject": "전문 교과", "course": "6. 발명과 디자인", "openYear": "2022"}, "node": "3. 교수·학습", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "특수교육", "subject": "특수교육 교과/영역", "course": "사무지원", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}
 {"ctx": {"school_level": "특수교육", "subject": "특수교육 교과/영역", "course": "대인서비스", "openYear": "2022"}, "node": "2. 내용 체계 및 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "특수교육", "subject": "특수교육 교과/영역", "course": "음악", "openYear": "2022"}, "node": "가. 내용 체계", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "특수교육", "subject": "특수교육 교과/영역", "course": "음악", "openYear": "2022"}, "node": "나. 성취기준", "error": "boardViewContent 없음"}
+{"ctx": {"school_level": "특수교육", "subject": "특수교육 교과/영역", "course": "음악", "openYear": "2022"}, "node": "3. 교수·학습 및 평가", "error": "boardViewContent 없음"}

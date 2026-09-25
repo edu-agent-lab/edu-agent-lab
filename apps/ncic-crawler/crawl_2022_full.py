@@ -84,27 +84,121 @@ def fetch_view(sess, csrf, node, openYear):
     })
 
 
-def _standards_lines_only(lines):
+def fetch_lines(sess, csrf, node, openYear, retries=3):
+    """view.do를 호출해 boardViewContent 줄을 가져온다. 장시간 크롤링 중에는 서버/세션
+    상태에 따라 실제로는 내용이 있는데도 일시적으로 빈 응답이 오는 경우가 있어(재확인 시
+    정상 응답), 비어있으면 잠깐 쉬고 재시도한다. 그래도 비면 None을 돌려준다."""
+    for attempt in range(retries):
+        html = fetch_view(sess, csrf, node, openYear)
+        lines = extract_board_view_content(html)
+        if lines:
+            return lines
+        if attempt < retries - 1:
+            time.sleep(2.0 * (attempt + 1))
+    return None
+
+
+def _split_content_system_and_standards(lines):
     """단일 과목은 '가.내용체계'와 '나.성취기준'이 한 페이지에 합쳐져 오는 경우가 있다.
-    '나. 성취기준' 표제가 있으면 그 이후만, 없으면(이미 성취기준만 있는 페이지) 전체를 쓴다."""
+    '나. 성취기준' 표제를 기준으로 그 앞(내용체계)/뒤(성취기준)를 나눈다.
+    표제가 없으면(이미 성취기준만 있는 페이지) 내용체계 없이 전체를 성취기준으로 본다."""
     for i, ln in enumerate(lines):
         if RE_NA.match(ln):
-            return lines[i + 1:]
-    return lines
+            return lines[:i], lines[i + 1:]
+    return [], lines
+
+
+def crawl_content_system_leaf(sess, csrf, node, ctx, writer, errors, lines=None):
+    """'가. 내용 체계' 표(핵심 아이디어 + 범주별 내용 요소)를 크롤링한다.
+    표 자체는 행/열 구조를 엄밀히 복원하지 않고, 셀 텍스트를 읽는 순서 그대로 줄 단위로
+    남긴다 — 범주 라벨(지식·이해/과정·기능/가치·태도)이 텍스트 안에 그대로 있어 LLM이
+    맥락으로 구조를 파악하는 데는 충분하고, HTML rowspan/colspan을 엄밀히 복원하는 것보다
+    훨씬 견고하다."""
+    if lines is None:
+        # 단독 리프(예: "가. 내용 체계 - 공통수학1")는 그 자체가 내용체계 표뿐이고
+        # '나.성취기준' 표제가 같은 페이지에 없으므로, 결합페이지처럼 나눌 필요 없이 전체를 쓴다.
+        time.sleep(SLEEP)
+        try:
+            lines = fetch_lines(sess, csrf, node, ctx["openYear"])
+            if not lines:
+                errors.append({"ctx": ctx, "node": node["title"], "error": "boardViewContent 없음"})
+                return
+        except Exception as e:
+            errors.append({"ctx": ctx, "node": node["title"], "error": str(e)})
+            return
+
+    if not lines:
+        return
+
+    m = RE_GA.match(node["title"])
+    course = ctx["course"]
+    if m:
+        specific = re.sub(r"^가\.\s*내용\s*체계\s*-\s*", "", node["title"]).strip()
+        if specific and specific != node["title"]:
+            course = specific
+
+    record = {
+        "doc_type": "content_system",
+        "school_level": ctx["school_level"],
+        "subject": ctx["subject"],
+        "course": course,
+        "seq": node.get("ref"),
+        "lines": lines,
+        "text": (
+            f"[{ctx['subject']}" + (f" · {course}" if course else "") + " · 내용 체계]\n"
+            + "\n".join(lines)
+        ),
+    }
+    writer(record)
+
+
+def crawl_purpose_goals_leaf(sess, csrf, node, ctx, writer, errors):
+    """'1. 성격 및 목표' 페이지: 가.성격 / 나.목표 두 섹션을 텍스트로 남긴다."""
+    time.sleep(SLEEP)
+    try:
+        lines = fetch_lines(sess, csrf, node, ctx["openYear"])
+        if not lines:
+            errors.append({"ctx": ctx, "node": node["title"], "error": "boardViewContent 없음"})
+            return
+        sections = structure_teaching_assessment(lines)  # 가/나 최상위 분리 로직을 그대로 재사용
+    except Exception as e:
+        errors.append({"ctx": ctx, "node": node["title"], "error": str(e)})
+        return
+
+    for top, subs in sections.items():
+        merged_text = "\n".join(v["text"] for v in subs.values())
+        record = {
+            "doc_type": "purpose_goals",
+            "school_level": ctx["school_level"],
+            "subject": ctx["subject"],
+            "course": ctx["course"],
+            "section": top,  # "성격" | "목표"
+            "seq": node.get("ref"),
+            "text": (
+                f"[{ctx['subject']}" + (f" · {ctx['course']}" if ctx["course"] else "")
+                + f" · {top}]\n" + merged_text
+            ),
+        }
+        writer(record)
 
 
 def crawl_achievement_leaf(sess, csrf, node, ctx, writer, errors):
     time.sleep(SLEEP)
     try:
-        html = fetch_view(sess, csrf, node, ctx["openYear"])
-        lines = extract_board_view_content(html)
-        if not lines:
+        raw_lines = fetch_lines(sess, csrf, node, ctx["openYear"])
+        if not raw_lines:
             errors.append({"ctx": ctx, "node": node["title"], "error": "boardViewContent 없음"})
             return
-        units = structure_standards(_standards_lines_only(lines))
+        content_system_lines, standards_lines = _split_content_system_and_standards(raw_lines)
+        units = structure_standards(standards_lines)
     except Exception as e:
         errors.append({"ctx": ctx, "node": node["title"], "error": str(e)})
         return
+
+    # 단일 과목 페이지는 '가.내용체계'가 같은 페이지에 합쳐져 있으므로 같은 fetch에서 같이 뽑는다
+    # (별도 리프로 존재하는 경우는 walk()에서 crawl_content_system_leaf를 따로 호출한다).
+    if content_system_lines:
+        crawl_content_system_leaf(sess, csrf, node, ctx, writer, errors, lines=content_system_lines)
 
     explicit_grade_band = node["title"] if node["title"].startswith("[") else None
 
@@ -155,8 +249,7 @@ def crawl_achievement_leaf(sess, csrf, node, ctx, writer, errors):
 def crawl_teaching_assessment_leaf(sess, csrf, node, ctx, writer, errors):
     time.sleep(SLEEP)
     try:
-        html = fetch_view(sess, csrf, node, ctx["openYear"])
-        lines = extract_board_view_content(html)
+        lines = fetch_lines(sess, csrf, node, ctx["openYear"])
         if not lines:
             errors.append({"ctx": ctx, "node": node["title"], "error": "boardViewContent 없음"})
             return
@@ -232,12 +325,17 @@ def walk(sess, csrf, node, ctx, writer, errors):
             return
         for child in children:
             if RE_GA.match(child["title"]):
-                continue  # 내용 체계 표는 성취기준 크롤링 목적상 스킵
-            walk_achievement_branch(sess, csrf, child, ctx, writer, errors)
+                crawl_content_system_leaf(sess, csrf, child, ctx, writer, errors)
+            else:
+                walk_achievement_branch(sess, csrf, child, ctx, writer, errors)
         return
 
-    if RE_1.match(title) or "개요" in title:
-        return  # 성격/목표, 설계 개요는 스킵
+    if RE_1.match(title):
+        crawl_purpose_goals_leaf(sess, csrf, node, ctx, writer, errors)
+        return
+
+    if "개요" in title:
+        return  # '교육과정 설계의 개요'는 1.성격및목표와 내용이 겹치고 포맷도 달라(HWP JSON) 스킵
 
     if node.get("folder"):
         time.sleep(SLEEP)
