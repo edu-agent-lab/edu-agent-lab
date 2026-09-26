@@ -17,6 +17,12 @@ def load_records(path=DEFAULT_PATH, doc_type=None):
             if doc_type is not None and r.get("doc_type") != doc_type:
                 continue
             r["_id"] = i
+            if r.get("doc_type") == "achievement_standard":
+                # 키워드(BM25) 매칭용 필드. content만 쓰면 같은 영역(area)의 다른 코드에
+                # 있는 표현("한살이")을 놓치고, text(해설+고려사항 포함)를 통째로 쓰면
+                # 무관한 단어까지 걸려 노이즈가 생긴다 — content+area가 재현율/정밀도
+                # 둘 다 실측으로 가장 나았다 (README 실험 기록 참고).
+                r["search_text"] = f"{r['content']} {r['area']}"
             records.append(r)
     return records
 
