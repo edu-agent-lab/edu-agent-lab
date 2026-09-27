@@ -27,8 +27,10 @@ def load_records(path=DEFAULT_PATH, doc_type=None):
     return records
 
 
-def filter_by_slots(records, school_level=None, subject=None, grade_band=None):
-    """학년/과목 슬롯으로 1차 필터링 (정확 매칭)."""
+def filter_by_slots(records, school_level=None, subject=None, grade_band=None, course=None):
+    """학년/과목/학년군/코스 슬롯으로 1차 필터링 (정확 매칭).
+    course는 achievement_standard 기준으로 좁혀진 이름("공통수학1")을 그대로 쓰면 된다
+    (achievement_standard의 course 필드는 이미 이 단위로 저장돼 있음)."""
     out = records
     if school_level:
         out = [r for r in out if r.get("school_level") == school_level]
@@ -36,4 +38,6 @@ def filter_by_slots(records, school_level=None, subject=None, grade_band=None):
         out = [r for r in out if r.get("subject") == subject]
     if grade_band:
         out = [r for r in out if r.get("grade_band") == grade_band]
+    if course:
+        out = [r for r in out if r.get("course") == course]
     return out
