@@ -1,2 +1,6 @@
 # build_index.py로 언제든 재생성 가능한 캐시라 커밋하지 않는다.
 index/
+
+# build_index.py 실행 로그/pid (디버깅용 임시 파일)
+build_index.log
+build_index.pid

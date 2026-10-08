@@ -1,0 +1,20 @@
+{"id": "example", "school_level": "고등학교", "subject": "수학", "course": "공통수학1", "topic": "다항식 인수분해", "expect": ["10공수1-01-03"], "rationale": "형식 참고용 예시 — 실제 채점에는 포함하지 마세요. expect는 코드 배열(복수 가능), rationale은 왜 이 코드인지/같은 course 안에서 헷갈릴 만한 다른 코드는 왜 아닌지."}
+{"id": "topic-01", "school_level": "초등학교", "subject": "과학", "course": "과학", "topic": "전지와 전구로 전기 회로 만들기", "expect": ["6과15-01"], "rationale": ""}
+{"id": "topic-02", "school_level": "중학교", "subject": "과학", "course": "과학", "topic": "전기 회로의 저항과 전류", "expect": ["9과14-02"], "rationale": ""}
+{"id": "topic-03", "school_level": "고등학교", "subject": "과학", "course": "물리학", "topic": "전기 회로에서 소비 전력", "expect": ["12물리02-02"], "rationale": ""}
+{"id": "topic-04", "school_level": "중학교", "subject": "과학", "course": "과학", "topic": "광합성과 호흡의 관계", "expect": ["9과12-02"], "rationale": ""}
+{"id": "topic-05", "school_level": "고등학교", "subject": "과학", "course": "세포와 물질대사", "topic": "광합성의 명반응과 탄소 고정", "expect": ["12세포03-06"], "rationale": ""}
+{"id": "topic-06", "school_level": "중학교", "subject": "과학", "course": "과학", "topic": "멘델 유전의 원리", "expect": ["9과21-04"], "rationale": ""}
+{"id": "topic-07", "school_level": "고등학교", "subject": "과학", "course": "생명과학", "topic": "염색체와 유전자의 관계", "expect": ["12생과03-01"], "rationale": ""}
+{"id": "topic-08", "school_level": "초등학교", "subject": "수학", "course": "수학", "topic": "분수의 나눗셈 계산 원리", "expect": ["6수01-11"], "rationale": ""}
+{"id": "topic-09", "school_level": "초등학교", "subject": "과학", "course": "과학", "topic": "지구의 자전으로 낮과 밤이 생기는 이유", "expect": ["6과12-02"], "rationale": ""}
+{"id": "topic-10", "school_level": "중학교", "subject": "수학", "course": "수학", "topic": "부등식의 성질과 풀이", "expect": ["9수02-11"], "rationale": ""}
+{"id": "topic-11", "school_level": "고등학교", "subject": "수학", "course": "공통수학1", "topic": "이차부등식과 연립부등식 풀이", "expect": ["10공수1-02-11"], "rationale": ""}
+{"id": "topic-12", "school_level": "중학교", "subject": "수학", "course": "수학", "topic": "경우의 수 구하기", "expect": ["9수04-05"], "rationale": ""}
+{"id": "topic-13", "school_level": "고등학교", "subject": "수학", "course": "공통수학1", "topic": "순열과 조합", "expect": ["10공수1-03-02"], "rationale": ""}
+{"id": "topic-14", "school_level": "중학교", "subject": "사회", "course": "사회", "topic": "헌법에 보장된 기본권", "expect": ["9사(일사)06-01"], "rationale": ""}
+{"id": "topic-15", "school_level": "고등학교", "subject": "사회", "course": "통합사회2", "topic": "헌법과 인권 보장", "expect": ["10통사2-01-02"], "rationale": ""}
+{"id": "topic-16", "school_level": "초등학교", "subject": "국어", "course": "국어", "topic": "타당한 근거를 들어 토론하기", "expect": ["6국01-07"], "rationale": ""}
+{"id": "topic-17", "school_level": "중학교", "subject": "국어", "course": "국어", "topic": "반론을 고려한 논증 구성", "expect": ["9국01-08"], "rationale": ""}
+{"id": "topic-18", "school_level": "중학교", "subject": "사회", "course": "사회", "topic": "민주주의의 발전 과정", "expect": ["9사(일사)03-02"], "rationale": ""}
+{"id": "topic-19", "school_level": "고등학교", "subject": "수학", "course": "공통수학1", "topic": "세포 분열 과정", "expect": [], "rationale": ""}

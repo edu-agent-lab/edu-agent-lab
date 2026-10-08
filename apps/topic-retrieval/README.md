@@ -16,9 +16,12 @@
      걸려서 노이즈 발생 (예: "식물의 한살이" 검색에 "식물의 구조와 기능" 단원까지 상위권 오염)
    - `content + area`: 같은 영역 내 표현은 area로 잡히고, 무관한 영역의 지엽적 언급은
      안 걸림. `data_loader.load_records()`가 로드 시점에 `search_text` 필드로 미리 만들어둠
-3. **임베딩 검색**: OpenAI 임베딩으로 주제와 성취기준 간 코사인 유사도를 계산한다
-   (`embedding_search.py`) — 표현이 달라도(예: "환경 보전" vs 원문 "지속가능한 발전")
-   찾을 수 있음
+3. **임베딩 검색(dense)**: 로컬 임베딩 모델([`dragonkue/BGE-m3-ko`](https://huggingface.co/dragonkue/BGE-m3-ko),
+   BAAI/bge-m3의 한국어 파인튜닝판)로 주제와 성취기준 간 코사인 유사도를 계산한다
+   (`embedding_client.py`, `embedding_search.py`) — 표현이 달라도(예: "환경 보전" vs
+   원문 "지속가능한 발전") 찾을 수 있음. OpenAI API 대신 로컬에서 돌기 때문에 API
+   키/비용이 없는 대신, 최초 실행 시 모델(0.6B 파라미터)을 다운로드하고 추론도
+   로컬 CPU/GPU로 하는 만큼 API 호출보다 느림
 4. **하이브리드**: 위 두 결과를 RRF(Reciprocal Rank Fusion)로 합쳐서 최종 순위를 매긴다
    (`hybrid_search.py`) — 한쪽만 성공했다고 다른 쪽을 생략하지 않고 항상 둘 다 돌려서 합산
 
@@ -26,12 +29,12 @@
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env   # OPENAI_API_KEY 채우기
 python build_index.py  # 성취기준 전체(5700여건)를 한 번 임베딩해서 index/에 캐싱
 ```
 
-`build_index.py`는 OpenAI API를 호출하므로 비용이 든다(text-embedding-3-small 기준
-전체 한 번 돌리는 데 매우 저렴함, 대략 $0.03 미만). 캐시는 `.gitignore`되어 있어
+`.env`는 필요 없다 (임베딩이 로컬 모델이라 API 키 없음). `build_index.py`는 첫 실행 시
+`dragonkue/BGE-m3-ko` 가중치를 허깅페이스에서 다운로드한 뒤(1GB대), 5700여 건을 CPU로
+전부 인코딩한다 — API 호출과 달리 시간이 좀 걸릴 수 있다. 캐시는 `.gitignore`되어 있어
 커밋되지 않으니, 다시 받으면 각자 한 번씩 돌려야 한다.
 
 ## 실행
