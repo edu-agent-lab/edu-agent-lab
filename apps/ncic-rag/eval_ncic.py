@@ -113,7 +113,25 @@ def score(case: dict, rows: list[dict]) -> Result:
     )
 
 
-def run(index: Index, cases: list[dict], mode: str) -> list[Result]:
+# 필터로 쓸 필드 조합. 어디까지 거는 게 나은지를 재기 위한 실험 축이다.
+# course는 816개나 되고 사용자가 정확히 말할 가능성이 낮아 기본 조합에서 뺐다.
+FIELD_SETS = {
+    "none": (),
+    "level": ("school_level",),
+    "level+subject": ("school_level", "subject"),
+    "level+subject+doctype": ("school_level", "subject", "doc_type"),
+    "all": ("school_level", "subject", "doc_type", "course"),
+}
+
+
+def run(
+    index: Index,
+    cases: list[dict],
+    mode: str,
+    *,
+    fields: tuple[str, ...] = ("school_level", "subject", "doc_type", "course"),
+    filter_mode: str = "hard",
+) -> list[Result]:
     results = []
     for case in cases:
         f = case.get("filters") or {}
@@ -121,10 +139,8 @@ def run(index: Index, cases: list[dict], mode: str) -> list[Result]:
             case["query"],
             mode=mode,
             top_k=TOP_K,
-            doc_type=f.get("doc_type"),
-            school_level=f.get("school_level"),
-            subject=f.get("subject"),
-            course=f.get("course"),
+            filter_mode=filter_mode,
+            **{k: f.get(k) for k in fields},
         )
         results.append(score(case, [row for row, _ in hits]))
     return results
@@ -195,12 +211,45 @@ def compare(index: Index, cases: list[dict], modes: list[str]) -> None:
     print()
 
 
+def summarize(rs: list[Result]) -> str:
+    scored = [r for r in rs if r.top1 is not None]
+    return (
+        f"{sum(bool(r.top1) for r in scored)}/{len(scored):<5} "
+        f"{sum(r.recall3 for r in rs) / len(rs):7.2f} "
+        f"{sum(r.recall10 for r in rs) / len(rs):7.2f} "
+        f"{sum(r.meta_ok for r in rs) / len(rs):7.2f} "
+        f"{sum(len(r.noise) for r in rs):7} "
+        f"{sum(r.passed for r in rs)}/{len(rs)}"
+    )
+
+
+def compare_filters(index: Index, cases: list[dict], mode: str) -> None:
+    """필터 필드 조합 × 적용 방식(hard/soft)을 한 표로.
+
+    메타(요청한 학교급·과목을 상위 5건이 지키는 비율)를 같이 봐야 한다.
+    통과 수만 보면 "조건을 어기면서 정답을 맞힌" 조합이 좋아 보일 수 있다.
+    """
+    print(f"\n[mode={mode}] 필터 조합 비교")
+    print(f"{'필드':24} {'적용':6} {'Top1':>8} {'R@3':>7} {'R@10':>7} {'메타':>7} {'노이즈':>7} {'통과'}")
+    print("-" * 82)
+    for name, fields in FIELD_SETS.items():
+        for fm in ("hard", "soft"):
+            if not fields and fm == "soft":
+                continue  # 필드가 없으면 hard/soft가 같다
+            rs = run(index, cases, mode, fields=fields, filter_mode=fm)
+            print(f"{name:24} {fm:6} {summarize(rs)}")
+    print()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="NCIC 검색 평가")
     parser.add_argument("--mode", default="hybrid", choices=["dense", "bm25", "hybrid"])
     parser.add_argument("--variant", default="v2", choices=["v1", "v2", "v3"])
     parser.add_argument("--vecs", default=None)
     parser.add_argument("--compare", action="store_true", help="mode 3종 비교")
+    parser.add_argument(
+        "--compare-filters", action="store_true", help="필터 필드 조합 × hard/soft 비교"
+    )
     parser.add_argument("--case", help="케이스 id 하나만")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
@@ -216,7 +265,9 @@ def main() -> None:
     index = Index(args.variant, args.vecs or VECS)
     print(f"\n케이스 {len(cases)}개 · variant={args.variant}")
 
-    if args.compare:
+    if args.compare_filters:
+        compare_filters(index, cases, args.mode)
+    elif args.compare:
         compare(index, cases, ["bm25", "dense", "hybrid"])
     else:
         print(f"mode={args.mode}\n")

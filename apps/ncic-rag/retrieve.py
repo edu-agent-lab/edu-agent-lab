@@ -45,6 +45,10 @@ WEIGHT = {
 # 끌어올리는 보조라서 비중이 낮을 때 가장 좋다. 0.10~0.20이 평평해 중간값을 쓴다.
 BM25_WEIGHT = 0.15
 
+# filter_mode="soft"에서 조건에 안 맞는 레코드의 점수에 곱하는 값.
+# 1.0이면 필터를 안 거는 것과 같고, 0이면 hard와 같다.
+FILTER_PENALTY = 0.5
+
 _TOKEN = re.compile(r"[가-힣A-Za-z0-9]+")
 _HANGUL = re.compile(r"[가-힣]")
 
@@ -111,6 +115,7 @@ class Index:
         school_level: str | None = None,
         subject: str | None = None,
         course: str | None = None,
+        filter_mode: str = "hard",
     ) -> list[tuple[dict, float]]:
         score = np.zeros(len(self.rows))
 
@@ -130,10 +135,15 @@ class Index:
 
         score = score * np.array([WEIGHT[r["doc_type"]] for r in self.rows])
 
-        # 메타데이터 필터는 점수가 아니라 후보에서 빼는 방식이다. 학교급·과목은
-        # "비슷하면 통과"가 아니라 맞거나 틀린 조건이라 벡터에 맡기면 고등학교
-        # 자료가 중학교 질의에 섞인다.
-        keep = np.ones(len(self.rows), dtype=bool)
+        # 메타데이터 필터. 학교급·과목은 "비슷하면 통과"가 아니라 맞거나 틀린
+        # 조건이라 유사도에 맡기면 안 된다 - 실측으로 "중2" 질의에 고등학교
+        # 성취기준이 3·4위에 섞였고, 점수대(중 0.626/0.607, 고 0.570/0.555)가
+        # 겹쳐서 벡터가 학교급을 강제하지 못한다.
+        #
+        # 적용 방식은 둘 다 둔다. 어느 쪽이 나은지는 질의셋으로 재야 한다.
+        #   hard: 안 맞으면 후보에서 제외 (조건을 어기지 않지만 0건이 날 수 있다)
+        #   soft: 안 맞으면 점수에 FILTER_PENALTY를 곱한다 (0건을 피하지만 섞인다)
+        mismatch = np.zeros(len(self.rows), dtype=bool)
         for field, wanted in (
             ("doc_type", doc_type),
             ("school_level", school_level),
@@ -141,8 +151,13 @@ class Index:
             ("course", course),
         ):
             if wanted:
-                keep &= np.array([wanted in str(r.get(field) or "") for r in self.rows])
-        score[~keep] = -np.inf
+                mismatch |= ~np.array(
+                    [wanted in str(r.get(field) or "") for r in self.rows]
+                )
+        if filter_mode == "soft":
+            score[mismatch] *= FILTER_PENALTY
+        else:
+            score[mismatch] = -np.inf
 
         order = np.argsort(score)[::-1][:top_k]
         return [(self.rows[i], float(score[i])) for i in order if score[i] > -np.inf]
@@ -159,6 +174,7 @@ def main() -> None:
     parser.add_argument("--school-level")
     parser.add_argument("--subject")
     parser.add_argument("--course")
+    parser.add_argument("--filter-mode", default="hard", choices=["hard", "soft"])
     args = parser.parse_args()
 
     index = Index(args.variant, args.vecs)
@@ -170,6 +186,7 @@ def main() -> None:
         school_level=args.school_level,
         subject=args.subject,
         course=args.course,
+        filter_mode=args.filter_mode,
     )
 
     print(f"\n[{args.mode}] {args.query}\n" + "-" * 70)
