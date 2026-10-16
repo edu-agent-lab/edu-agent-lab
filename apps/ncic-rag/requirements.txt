@@ -1,4 +1,0 @@
-# bge-m3-ko는 로컬에서 돈다 (API 비용 0, 첫 실행 시 모델 2GB 다운로드).
-sentence-transformers
-rank-bm25
-numpy

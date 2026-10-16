@@ -42,11 +42,13 @@ def _scope_to_golden(records, golden_path=GOLDEN_PATH):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--out-dir", default=None, help="기본 index/")
     ap.add_argument("--scope-golden", action="store_true",
                      help="전체 대신 골든셋 질의 범위(12개 school_level/subject/course 조합)만 임베딩")
     args = ap.parse_args()
 
-    os.makedirs(INDEX_DIR, exist_ok=True)
+    index_dir = args.out_dir or INDEX_DIR
+    os.makedirs(index_dir, exist_ok=True)
 
     records = load_records(doc_type=DOC_TYPE)
     if args.scope_golden:
@@ -60,13 +62,13 @@ def main():
     vectors = embed_texts(texts)
 
     arr = np.array(vectors, dtype=np.float32)
-    np.save(os.path.join(INDEX_DIR, "embeddings.npy"), arr)
+    np.save(os.path.join(index_dir, "embeddings.npy"), arr)
 
     meta = [{"_id": r["_id"], "code": r.get("code"), "seq": r.get("seq")} for r in records]
-    with open(os.path.join(INDEX_DIR, "meta.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(index_dir, "meta.json"), "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False)
 
-    print(f"저장 완료: {arr.shape} -> {INDEX_DIR}/embeddings.npy")
+    print(f"저장 완료: {arr.shape} -> {index_dir}/embeddings.npy")
 
 
 if __name__ == "__main__":

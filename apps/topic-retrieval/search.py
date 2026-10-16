@@ -20,6 +20,8 @@ def main():
     ap.add_argument("--subject", required=True, help="예: 사회, 국어, 수학 ...")
     ap.add_argument("--topic", required=True, help="사용자가 말한 토론 주제(자유 문장)")
     ap.add_argument("--top_k", type=int, default=10)
+    ap.add_argument("--fusion", default="weighted", choices=["weighted", "rrf"],
+                    help="결합 방식. 기본 weighted (RRF는 비교용)")
     args = ap.parse_args()
 
     all_records = load_records(doc_type="achievement_standard")
@@ -32,11 +34,11 @@ def main():
         return
 
     index = EmbeddingIndex()
-    results = hybrid_search(args.topic, scoped, index, top_k=args.top_k)
+    results = hybrid_search(args.topic, scoped, index, top_k=args.top_k, fusion=args.fusion)
 
     print(f"\n주제: {args.topic!r}\n")
     for i, (record, score) in enumerate(results, 1):
-        print(f"[{i}] rrf={score:.4f}  {record['code']}  ({record['area']})")
+        print(f"[{i}] score={score:.4f}  {record['code']}  ({record['area']})")
         print(f"    {record['content']}")
         print()
 

@@ -1,15 +1,23 @@
-# topic-retrieval (실험용)
+# topic-retrieval — NCIC 성취기준 검색 (프로젝트 2의 Retrieval 파트)
 
-`experiment/topic-retrieval` 브랜치 전용. 팀과 아직 합의 전인 개인 실험이라 여기서만 건드린다.
+학년/과목/주제를 주면 `ncic-crawler`가 만든 `ncic_2022_rag.jsonl`(9,939건)에서
+관련 성취기준을 찾는다. 에이전트에서 `search_standards(school_level, subject, topic)`
+도구로 쓰일 부분이다.
 
-사용자가 학년/과목/주제(자유 문장)를 주면, `ncic-crawler`가 만든
-`ncic_2022_rag.jsonl`에서 관련 성취기준을 찾는 검색 방식을 테스트하는 스크립트 모음.
+**골든셋 38건 기준 Top-1 8/10 · R@3 0.92 · R@10 0.97 · 통과 33/38.**
+어느 방식을 왜 골랐는지는 [`docs/topic-retrieval/evaluation.md`](../../docs/topic-retrieval/evaluation.md),
+데이터 특성과 필터 설계는 [`data-notes.md`](../../docs/topic-retrieval/data-notes.md).
 
 ## 검색 방식
 
 1. **슬롯 필터(정확 매칭)**: 학년/과목으로 후보를 먼저 좁힌다 (`data_loader.filter_by_slots`)
-2. **키워드 검색**: 주제 문장을 형태소 분석(kiwipiepy)해 명사 키워드를 뽑고, BM25로
-   랭킹을 매긴다 (`keyword_search.py`). 매칭 대상은 `content + area`(성취기준 문장 +
+2. **키워드 검색(주력)**: 주제 문장을 문자 2-gram으로 토큰화해 BM25로 랭킹을 매긴다
+   (`keyword_search.py`). 원래 형태소 분석(kiwipiepy)을 썼는데, BM25가 순위를 주도하는
+   구성에서는 2-gram이 나았다(Top-1 6/10 -> 8/10) — 분석기가 "저작권"을 "저작"으로
+   쪼개는 손실이 드러나기 때문이다. 의존성도 하나 줄었다.
+   **BM25가 0건이면 "관련 자료 없음"으로 끝낸다** — 코사인에는 전역 임계값을 둘 수 없어서
+   (0건 정답 질의의 1위 코사인 0.569 > 정답 있는 질의 0.497) 이게 유일하게 작동하는
+   "결과 없음" 신호다. 매칭 대상은 `content + area`(성취기준 문장 +
    영역명) — 실험해보니 이게 재현율/정밀도 둘 다 제일 나았다:
    - `content`만 쓰면: 같은 영역(예: "생물의 한살이")의 다른 코드에만 있는 표현을 놓침
    - `text`(해설+고려사항까지 포함) 전체를 쓰면: 무관한 코드가 해설에 스친 단어 때문에
@@ -22,8 +30,9 @@
    원문 "지속가능한 발전") 찾을 수 있음. OpenAI API 대신 로컬에서 돌기 때문에 API
    키/비용이 없는 대신, 최초 실행 시 모델(0.6B 파라미터)을 다운로드하고 추론도
    로컬 CPU/GPU로 하는 만큼 API 호출보다 느림
-4. **하이브리드**: 위 두 결과를 RRF(Reciprocal Rank Fusion)로 합쳐서 최종 순위를 매긴다
-   (`hybrid_search.py`) — 한쪽만 성공했다고 다른 쪽을 생략하지 않고 항상 둘 다 돌려서 합산
+4. **하이브리드**: BM25를 기준선으로 두고 dense를 가산한다 — `bm25_정규화 + 0.5 * 코사인`
+   (`hybrid_search.py`). RRF는 쓰지 않는다: 순위만 쓰고 점수 크기를 버려서 양쪽 골든셋에서
+   일관되게 나빴다(통과 28/38 vs 가중합 32/38). `--fusion rrf`로 비교만 할 수 있게 남겨뒀다
 
 ## 준비
 
@@ -44,12 +53,26 @@ python search.py --school_level 고등학교 --subject 사회 \
     --topic "개발과 환경 보전 중 무엇을 우선할 것인가"
 ```
 
+## 평가
+
+```bash
+python eval.py              # 기본 구성
+python eval.py --compare    # 단계별(filter/bm25/embed/hybrid) + 결합 방식 비교
+python eval.py --case nr-topic-01 -v
+```
+
+골든셋 38건(`docs/topic-retrieval/golden-set.jsonl`). 두 구현의 케이스를 병합했고
+출처를 접두사로 구분한다 — `tr-*`(course까지 좁힌 단일 정답), `nr-*`(복수 정답,
+must_not/0건/어휘불일치, 특수교육 포함).
+
+지표는 recall@3/@10, MRR, Top-1, 메타(필터 누수), 노이즈(must_not)다. 통과 조건은
+"정답 전부 Top-10 + 노이즈 0 + Top-1 맞음 + 메타 1.00"이다.
+
 ## 아직 안 한 것 / 다음에 볼 것
 
-- RRF 대신 가중합 등 다른 결합 방식과 비교
-- top_k, RRF_K 같은 하이퍼파라미터 튜닝
-- teaching_assessment/content_system/purpose_goals도 같은 방식으로 검색할지 결정
-- 검색 품질 평가용 골든셋 준비 (지금은 눈으로만 확인)
-- 임베딩 쪽도 `content+area` 정도로 입력을 좁혔을 때 결과가 달라지는지 비교
-  (지금은 `text` 필드 그대로 임베딩 — 임베딩은 의미 기반이라 부가 텍스트가 껴도
-  BM25만큼 노이즈에 취약하진 않을 것으로 예상되지만 실측은 안 해봄)
+- **슬롯 추출**: 지금은 CLI 인자로 받는다. 에이전트에서는 LLM이 tool 인자로 채우고,
+  슬롯이 비면 검색하지 않고 되묻는 게 맞다
+- `grade_band` 필터: 표기가 4종으로 깨져 있어 정규화 선행 필요 (data-notes.md 참고)
+- 서술 문서(purpose_goals/content_system/teaching_assessment) 인덱스:
+  골든셋에 `deferred` 케이스 3건을 남겨뒀다. 벡터 파일 1개 + 도구 1개면 켤 수 있다
+- reranker: 남은 실패 중 `nr-semantic-01`이 첫 후보
