@@ -41,3 +41,38 @@ def filter_by_slots(records, school_level=None, subject=None, grade_band=None, c
     if course:
         out = [r for r in out if r.get("course") == course]
     return out
+
+
+# 일반 수업계획안 대상이 아닌 과목. 전체 9,939건의 57%를 차지하는데 성격이 다르다
+# (docs/topic-retrieval/data-notes.md). 기본으로 빼고, 필요할 때만 켠다.
+#
+#   특수교육 교과/영역  점자·수어처럼 일반 교과에 없는 과목 + 일반 교과 code를 재사용해
+#                      중복 code가 370종 생긴다
+#   전문 교과          특성화고 직업 교과 816개 course 대부분. 크롤 미수집 171건의 92%도 여기
+#   ~계열 선택 과목     예술고·과학고·체고 전공 심화
+SPECIAL_SUBJECTS = frozenset({
+    "특수교육 교과/영역",
+    "전문 교과",
+    "예술 계열 선택 과목",
+    "과학 계열 선택 과목",
+    "체육 계열 선택 과목",
+})
+
+
+def slot_options(records, include_special=False):
+    """화면 드롭다운에 쓸 선택지를 데이터에서 뽑는다.
+
+    반환: {school_level: {subject: [course, ...]}}
+
+    course를 자유 입력으로 받지 않는 이유 — 전체 816개라 사용자가 정확히 말할 수 없다.
+    학교급·과목으로 좁히면 초·중은 1개, 고등학교도 최대 19개로 줄어 고를 수 있다.
+    """
+    tree = {}
+    for r in records:
+        if not include_special and r["subject"] in SPECIAL_SUBJECTS:
+            continue
+        tree.setdefault(r["school_level"], {}).setdefault(r["subject"], set()).add(r["course"])
+    return {
+        lv: {subj: sorted(courses) for subj, courses in sorted(subs.items())}
+        for lv, subs in sorted(tree.items())
+    }

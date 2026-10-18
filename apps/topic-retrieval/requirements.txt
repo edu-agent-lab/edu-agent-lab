@@ -1,6 +1,9 @@
 # Python 3.11 기준.
 python-dotenv==1.2.3
 
+# 검색 화면 (app.py). CLI(search.py)만 쓸 거면 없어도 된다.
+streamlit==1.63.0
+
 # 로컬 임베딩 모델(dragonkue/BGE-m3-ko) 실행용. torch가 딸려와서 설치가 좀 큼(GB대).
 sentence-transformers==6.1.0
 
