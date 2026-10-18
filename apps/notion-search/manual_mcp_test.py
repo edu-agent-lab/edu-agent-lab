@@ -16,11 +16,14 @@ import asyncio
 import os
 import sys
 
+from pathlib import Path
+
 from dotenv import load_dotenv
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
-load_dotenv()
+# .env는 저장소 루트에 하나만 둔다 (앱마다 두면 키를 여러 벌 관리해야 한다).
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 NOTION_TOKEN = os.environ["NOTION_TOKEN"]
 QUERY = sys.argv[1] if len(sys.argv) > 1 else "토론 수업"

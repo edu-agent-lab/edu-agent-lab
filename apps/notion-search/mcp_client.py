@@ -16,13 +16,16 @@ import time
 from dataclasses import dataclass
 from typing import Any
 
+from pathlib import Path
+
 from dotenv import load_dotenv
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 from retry import backoff_delay
 
-load_dotenv()
+# .env는 저장소 루트에 하나만 둔다 (앱마다 두면 키를 여러 벌 관리해야 한다).
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 # 실습용 데이터셋 DB. Notion에서 데이터셋을 다시 복제하면 이 값도 바뀐다.
 DATA_SOURCE_ID = "0a49feee-0a11-8375-b694-87846e19329b"

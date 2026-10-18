@@ -8,10 +8,13 @@ import os
 from functools import lru_cache
 
 import torch
+from pathlib import Path
+
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 
-load_dotenv()
+# .env는 저장소 루트에 하나만 둔다 (앱마다 두면 키를 여러 벌 관리해야 한다).
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 DEFAULT_EMBEDDING_MODEL = "dragonkue/BGE-m3-ko"
 

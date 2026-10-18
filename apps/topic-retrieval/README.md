@@ -41,7 +41,8 @@ pip install -r requirements.txt
 python build_index.py  # 성취기준 전체(5700여건)를 한 번 임베딩해서 index/에 캐싱
 ```
 
-`.env`는 필요 없다 (임베딩이 로컬 모델이라 API 키 없음). `build_index.py`는 첫 실행 시
+키는 **저장소 루트 `.env` 하나**에서 읽는다 (`cp .env.example .env`). 검색은 키 없이도
+되고, 수업자료 생성에만 `OPENAI_API_KEY`가 필요하다. `build_index.py`는 첫 실행 시
 `dragonkue/BGE-m3-ko` 가중치를 허깅페이스에서 다운로드한 뒤(1GB대), 5700여 건을 CPU로
 전부 인코딩한다 — API 호출과 달리 시간이 좀 걸릴 수 있다. 캐시는 `.gitignore`되어 있어
 커밋되지 않으니, 다시 받으면 각자 한 번씩 돌려야 한다.

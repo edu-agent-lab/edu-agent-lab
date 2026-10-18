@@ -82,7 +82,7 @@ summarize_text(title, content) -> str   # 페이지 1건 요약, app.py가 카�
 ```bash
 cd apps/notion-search
 pip install -r requirements.txt
-cp .env.example .env  # 값 채우기
+cp ../../.env.example ../../.env   # 저장소 루트에 하나만 둔다. 값 채우기
 streamlit run app.py
 ```
 
@@ -124,7 +124,7 @@ Notion 공식 문서 기준으로 연결 방식이 두 가지 있는데, 실제�
 
 ```bash
 cd apps/notion-search
-cp .env.example .env   # NOTION_TOKEN에 본인이 발급받은(or 공유받은) Integration Secret 채우기
+cp ../../.env.example ../../.env   # NOTION_TOKEN에 발급받은 Integration Secret 채우기
 pip install -r requirements.txt
 python manual_mcp_test.py "검색어"
 ```

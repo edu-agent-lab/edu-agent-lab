@@ -12,12 +12,15 @@ import os
 import time
 from functools import lru_cache
 
+from pathlib import Path
+
 from dotenv import load_dotenv
 from openai import OpenAI
 
 from retry import MAX_ATTEMPTS, backoff_delay
 
-load_dotenv()
+# .env는 저장소 루트에 하나만 둔다 (앱마다 두면 키를 여러 벌 관리해야 한다).
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 # 분류·요약 둘 다 가벼운 작업이라 mini로 충분하다. 골든셋 한 번 도는 데
 # 입력 5만 / 출력 3천 토큰 수준이라 실행당 30원이 안 된다.
