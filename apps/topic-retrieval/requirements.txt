@@ -1,0 +1,12 @@
+# Python 3.11 기준.
+python-dotenv==1.2.3
+
+# 로컬 임베딩 모델(dragonkue/BGE-m3-ko) 실행용. torch가 딸려와서 설치가 좀 큼(GB대).
+sentence-transformers==6.1.0
+
+# BM25 랭킹 (흔한 단어가 과도하게 매칭되는 걸 IDF로 눌러줌).
+# 토크나이저는 문자 2-gram을 직접 구현했다 - 형태소 분석기보다 BM25 중심 랭킹에서
+# 나았고(keyword_search.py 주석 참고) 의존성이 하나 줄었다.
+rank-bm25==0.2.2
+
+numpy==2.2.1
