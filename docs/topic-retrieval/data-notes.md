@@ -1,7 +1,8 @@
 # NCIC 데이터 특성과 필터 설계
 
 > 대상 데이터: `apps/ncic-crawler/output/ncic_2022_rag.jsonl` **9,939건** (2026-10-06, `f7701fe` 기준)
-> 모든 숫자는 실측이다. 재현: `apps/ncic-rag`에서 `dataset.load_rows()`로 세면 된다.
+> 모든 숫자는 실측이다. 재현: `apps/topic-retrieval`에서 `data_loader.load_records()`로 세면 된다
+> (doc_type 인자 없이 부르면 전체 9,939건이 나온다).
 
 ## 1. 구성
 
@@ -138,7 +139,8 @@
 | **전부(+course)** | **hard** | **11/13** | **0.72** | **0.85** | **1.00** | **14/22** |
 | 전부 | soft | 11/13 | 0.72 | 0.85 | 0.98 | 13/22 |
 
-재현: `python eval_ncic.py --compare-filters`
+측정 당시 스크립트(`apps/ncic-rag/eval_ncic.py --compare-filters`)는 통합 때 삭제됐다.
+현재 코드로는 `filter_by_slots`에 넘기는 슬롯을 바꿔가며 `eval.py`를 돌리면 같은 비교가 된다.
 
 읽을 것 세 가지:
 
