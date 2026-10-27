@@ -4,7 +4,12 @@
 주의: course 표기 단위가 문서 타입마다 다르다.
 - achievement_standard: "공통수학1" (특정 코스로 좁혀짐)
 - purpose_goals/teaching_assessment: "공통수학1, 공통수학2" (여러 코스가 묶인
-  그룹 단위 문서라서). 그래서 정확 매칭이 아니라 포함 관계로 매칭한다.
+  그룹 단위 문서라서). 그래서 쉼표로 쪼갠 목록 안에 정확히 있는지로 매칭한다.
+
+문자열 포함 관계("화학" in "화학 반응의 세계")로 매칭하면 이름이 겹치는 다른 과정까지
+걸린다 — 화학 수업에 진로선택 "화학 반응의 세계"의 성격·목표·교수학습이 같이 들어갔다.
+일반 교과 과정 155개 중 29~31개가 이랬다. "·", "/"는 "기술·가정", "실과(기술 · 가정)/정보"
+처럼 과정 이름 안에 쓰여서 구분자로 보지 않는다.
 """
 from collections import defaultdict
 
@@ -23,7 +28,7 @@ def load_all_by_type(path=DEFAULT_PATH):
 def _course_matches(record_course, target_course):
     if record_course is None or target_course is None:
         return record_course == target_course
-    return target_course in record_course or record_course in target_course
+    return target_course in [c.strip() for c in record_course.split(",")]
 
 
 def get_course_context(by_type, school_level, subject, course):
