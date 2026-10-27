@@ -22,26 +22,27 @@ edu-agent-lab/
 │   └── topic-retrieval/   프로젝트 2의 Retrieval 파트. 성취기준 검색 (슬롯 필터 + BM25 + 임베딩)
 └── docs/
     ├── notion-search/     프로젝트 1 설계·평가 문서, 골든셋
-    └── topic-retrieval/   검색 방식 선정 근거, 데이터 특성, 골든셋
+    └── topic-retrieval/   검색 방식 선정 근거, 데이터 특성, 골든셋, 프로젝트 2 전략 문서
 ```
 
 각 폴더의 README에 실행 방법과 설계 결정이 적혀 있습니다.
 
 ## 프로젝트 2 진행 상황
 
-전략 문서의 RAG 파이프라인 기준:
+[전략 문서](docs/topic-retrieval/rag-strategy.html)(분업·개발 순서·평가 계획)의 RAG 파이프라인 기준:
 
 | 단계 | 담당 | 상태 |
 |---|---|---|
 | NCIC 자료 수집 · 전처리 | 크롤러 | 완료 (9,939건, doc_type 4종) |
 | Indexing (Chunking · Embedding) | — | 완료. 성취기준은 원문이 한 문장 단위라 chunking 없이 레코드 = chunk |
-| Query 전처리 (슬롯 추출) | — | **미완**. 지금은 CLI 인자. 에이전트에서는 LLM이 tool 인자로 채운다 |
+| Query 전처리 (슬롯 추출) | — | 드롭다운으로 대체. 추출이 틀리면 사용자가 모르기 때문에 화면에서 직접 고른다. 에이전트에서는 LLM이 tool 인자로 채운다 |
 | Keyword Search (BM25) | — | 완료. 문자 2-gram + 후보군 기준 IDF |
 | Vector Search (dense) | — | 완료. `dragonkue/BGE-m3-ko` |
 | Hybrid Search | — | 완료. BM25 주력 + dense 0.5 가산, BM25 0건 게이트 |
 | RAG 평가 | — | 완료. 골든셋 19/19, 방식 비교 문서화 |
-| LLM Context 구성 | — | **미완**. `context_bundle`은 있으나 프롬프트로 안 넘김 |
-| 멀티턴 챗봇 · Notion 저장 | — | **미완** |
+| LLM Context 구성 · 생성 | — | 완료. 성취기준(해설·고려사항) + 과목 맥락 3종, 내용 체계는 관련 영역만. 출력은 8개 항목 고정 ([`generation-notes.md`](docs/topic-retrieval/generation-notes.md)) |
+| 멀티턴 챗봇 · Notion 저장 | — | 완료. `chat.py` — 주제 입력 -> 성취기준 번호 선택 -> 생성 -> 대화로 수정 -> Notion 저장 |
+| 생성 품질 평가 | — | **미완**. 정답이 없는 산출물이라 체크리스트가 필요하다 |
 
 근거와 측정값: [`docs/topic-retrieval/evaluation.md`](docs/topic-retrieval/evaluation.md),
 데이터 특성: [`docs/topic-retrieval/data-notes.md`](docs/topic-retrieval/data-notes.md)
