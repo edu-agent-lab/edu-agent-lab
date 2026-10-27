@@ -2,7 +2,7 @@
 
     streamlit run chat.py
 
-흐름: 주제 입력 -> 성취기준 검색 -> 번호로 선택 -> 생성 -> 수정 요청 반복
+흐름: 주제 입력 -> 성취기준 검색 -> 번호로 선택 -> 생성 -> 수정 요청 반복 -> Notion 저장
 
 **슬롯(학교급·과목·과정·자료 유형)은 여전히 사이드바 드롭다운으로 받는다.** app.py와 같은
 이유다 — 대화에서 뽑다가 틀리면 엉뚱한 학교급 성취기준으로 자료가 만들어지고 사용자는 그걸
@@ -27,6 +27,8 @@ from data_loader import filter_by_slots, load_records, slot_options
 from generate import MATERIAL_TYPES, SYSTEM, build_prompt, revise_material
 from llm_client import generate as llm_generate
 from llm_client import is_configured
+from notion_save import is_configured as notion_configured
+from notion_save import page_title, save_material
 
 TOP_K = 5
 
@@ -160,12 +162,35 @@ placeholder = {
 user_text = st.chat_input(placeholder)
 if not user_text:
     if st.session_state.get("material"):
-        st.download_button(
-            "마크다운으로 저장",
-            st.session_state.material,
-            file_name=f"{school_level}_{subject}_{material_type}.md",
-            mime="text/markdown",
-        )
+        col_md, col_notion = st.columns(2)
+        with col_md:
+            st.download_button(
+                "마크다운으로 저장",
+                st.session_state.material,
+                file_name=f"{school_level}_{subject}_{material_type}.md",
+                mime="text/markdown",
+                use_container_width=True,
+            )
+        with col_notion:
+            if st.button(
+                "Notion에 저장",
+                use_container_width=True,
+                disabled=not notion_configured(),
+                help=None if notion_configured() else "NOTION_TOKEN이 없습니다 (저장소 루트 .env)",
+            ):
+                title = page_title(
+                    school_level=school_level,
+                    subject=subject,
+                    topic=st.session_state.topic,
+                    material_type=material_type,
+                )
+                with st.spinner("Notion에 저장하는 중..."):
+                    try:
+                        url = save_material(title, st.session_state.material)
+                        say("assistant", f"Notion에 저장했어요: [{title}]({url})")
+                    except Exception as exc:
+                        say("assistant", f"Notion 저장에 실패했습니다: {exc}")
+                st.rerun()
     st.stop()
 
 say("user", user_text)

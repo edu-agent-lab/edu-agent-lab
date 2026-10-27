@@ -79,6 +79,12 @@ streamlit run chat.py
 [처음 프롬프트, 최신 자료, 이번 요청]만 넘겨서(`generate.revise_material`) 근거 성취기준과
 맥락을 유지하면서 프롬프트가 버전마다 불어나지 않게 한다.
 
+자료가 나오면 **Notion에 저장** 버튼으로 페이지를 만든다(`notion_save.py`). 기본 위치는
+팀스페이스 "실전 프로젝트 2" 페이지 아래이고 `.env`의 `NOTION_PARENT_PAGE_ID`로 바꾼다.
+notion-search와 같은 로컬 MCP 서버(`npx @notionhq/notion-mcp-server`)와 `NOTION_TOKEN`을
+쓰므로 Node가 필요하다. 본문은 마크다운 엔드포인트(`API-update-page-markdown`)로 그대로
+넣는다 — 루브릭 같은 마크다운 표도 Notion 표로 바뀐다.
+
 **CLI** — 같은 입력을 인자로 받는다.
 
 ```bash

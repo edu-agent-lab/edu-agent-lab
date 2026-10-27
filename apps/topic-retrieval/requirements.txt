@@ -13,3 +13,6 @@ sentence-transformers==6.1.0
 rank-bm25==0.2.2
 
 numpy==2.2.1
+
+# Notion 저장 (chat.py). notion-search와 같은 버전으로 맞춘다. 실행에 Node(npx)가 필요하다.
+mcp==2.2.0
