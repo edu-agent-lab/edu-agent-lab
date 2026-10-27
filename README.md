@@ -22,14 +22,14 @@ edu-agent-lab/
 │   └── topic-retrieval/   프로젝트 2의 Retrieval 파트. 성취기준 검색 (슬롯 필터 + BM25 + 임베딩)
 └── docs/
     ├── notion-search/     프로젝트 1 설계·평가 문서, 골든셋
-    └── topic-retrieval/   검색 방식 선정 근거, 데이터 특성, 골든셋
+    └── topic-retrieval/   검색 방식 선정 근거, 데이터 특성, 골든셋, 프로젝트 2 전략 문서
 ```
 
 각 폴더의 README에 실행 방법과 설계 결정이 적혀 있습니다.
 
 ## 프로젝트 2 진행 상황
 
-전략 문서의 RAG 파이프라인 기준:
+[전략 문서](docs/topic-retrieval/rag-strategy.html)(분업·개발 순서·평가 계획)의 RAG 파이프라인 기준:
 
 | 단계 | 담당 | 상태 |
 |---|---|---|

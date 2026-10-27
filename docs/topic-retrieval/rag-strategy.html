@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NCIC RAG 개발 분업 및 프로젝트 진행 전략</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+        background: #f5f6f8;
+        color: #222;
+        line-height: 1.7;
+    }
+
+    .container {
+        width: min(1100px, 92%);
+        margin: 0 auto;
+    }
+
+    header {
+        background: #1f2937;
+        color: white;
+        padding: 70px 0 60px;
+    }
+
+    header .tag {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        background: rgba(255,255,255,.12);
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    header h1 {
+        font-size: 38px;
+        line-height: 1.3;
+        margin: 0 0 18px;
+    }
+
+    header p {
+        margin: 0;
+        color: #d1d5db;
+        font-size: 17px;
+        max-width: 780px;
+    }
+
+    section {
+        padding: 55px 0;
+    }
+
+    h2 {
+        font-size: 28px;
+        margin: 0 0 25px;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+    .intro {
+        background: white;
+        margin-top: -30px;
+        border-radius: 18px;
+        padding: 30px;
+        box-shadow: 0 8px 30px rgba(0,0,0,.06);
+    }
+
+    .pipeline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 30px 0;
+    }
+
+    .step {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 14px 18px;
+        text-align: center;
+        min-width: 130px;
+        font-weight: 600;
+    }
+
+    .arrow {
+        font-size: 22px;
+        color: #9ca3af;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 16px;
+        padding: 28px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .card.a {
+        border-top: 5px solid #4f46e5;
+    }
+
+    .card.b {
+        border-top: 5px solid #059669;
+    }
+
+    .label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #6b7280;
+        margin-bottom: 8px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin: 7px 0;
+    }
+
+    .highlight {
+        background: #f3f4f6;
+        border-left: 4px solid #4f46e5;
+        padding: 18px 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    .warning {
+        background: #fff7ed;
+        border-left: 4px solid #f97316;
+        padding: 18px 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    .success {
+        background: #ecfdf5;
+        border-left: 4px solid #059669;
+        padding: 18px 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    .code {
+        background: #111827;
+        color: #e5e7eb;
+        padding: 22px;
+        border-radius: 12px;
+        overflow-x: auto;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 15px 16px;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: left;
+    }
+
+    th {
+        background: #f3f4f6;
+        font-size: 14px;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 4px 9px;
+        border-radius: 6px;
+        background: #eef2ff;
+        color: #4338ca;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .timeline {
+        display: grid;
+        gap: 15px;
+    }
+
+    .timeline-item {
+        background: white;
+        padding: 22px;
+        border-radius: 14px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .timeline-item strong {
+        display: block;
+        margin-bottom: 7px;
+    }
+
+    footer {
+        background: #111827;
+        color: #9ca3af;
+        padding: 35px 0;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    @media (max-width: 750px) {
+        header h1 {
+            font-size: 30px;
+        }
+
+        .cards {
+            grid-template-columns: 1fr;
+        }
+
+        .arrow {
+            transform: rotate(90deg);
+        }
+
+        .pipeline {
+            flex-direction: column;
+        }
+
+        .step {
+            width: 80%;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <div class="tag">NCIC RAG × 2인 팀 개발 전략</div>
+        <h1>둘 다 RAG를 경험하면서<br>하나의 서비스로 통합하기</h1>
+        <p>
+            NCIC 교육과정 자료를 기반으로 토의·토론 수업계획안을 생성하고
+            교육과정 근거를 검증하는 프로젝트에서,
+            두 명 모두 RAG의 핵심 과정을 경험하되 중복 개발을 최소화하는 방식.
+        </p>
+    </div>
+</header>
+
+<main>
+
+<section>
+    <div class="container">
+        <div class="intro">
+            <h2>01. 우리가 만들고 있는 것</h2>
+            <p>
+                이 프로젝트의 핵심 흐름은 단순히 "수업계획안을 생성하는 챗봇"이 아니다.
+                사용자의 요구를 멀티턴으로 수집하고, 생성된 수업계획안이 실제 국가교육과정에
+                근거하고 있는지 NCIC 자료를 통해 검증한 뒤, 최종 결과를 Notion에 저장하는
+                하나의 생성-검증 파이프라인을 만드는 것이 핵심이다.
+            </p>
+
+            <div class="highlight">
+                <strong>핵심 파이프라인</strong><br>
+                사용자 요구 수집 → 수업계획안 생성 → NCIC 검색/RAG →
+                교육과정 근거 검증 → 최종 계획안 완성 → Notion MCP → 페이지 생성
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>02. RAG를 어떻게 쪼개서 볼 것인가?</h2>
+
+        <p>
+            RAG를 하나의 기능으로 생각하지 말고, 크게
+            <strong>Indexing 단계</strong>와 <strong>Retrieval 단계</strong>로 나누는 것이 좋다.
+        </p>
+
+        <div class="pipeline">
+            <div class="step">NCIC 원본 자료</div>
+            <div class="arrow">→</div>
+            <div class="step">전처리</div>
+            <div class="arrow">→</div>
+            <div class="step">Chunking</div>
+            <div class="arrow">→</div>
+            <div class="step">Embedding</div>
+            <div class="arrow">→</div>
+            <div class="step">Vector DB</div>
+            <div class="arrow">→</div>
+            <div class="step">Retrieval</div>
+            <div class="arrow">→</div>
+            <div class="step">LLM</div>
+        </div>
+
+        <div class="cards">
+            <div class="card a">
+                <div class="label">TEAM MEMBER A</div>
+                <h3>Indexing Pipeline</h3>
+                <p>
+                    NCIC의 원본 자료를 LLM이 검색할 수 있는 지식베이스로
+                    변환하는 과정을 담당한다.
+                </p>
+                <ul>
+                    <li>NCIC 자료 수집</li>
+                    <li>문서 전처리</li>
+                    <li>메타데이터 설계</li>
+                    <li>Chunking 전략</li>
+                    <li>Embedding</li>
+                    <li>Vector DB 구축</li>
+                </ul>
+            </div>
+
+            <div class="card b">
+                <div class="label">TEAM MEMBER B</div>
+                <h3>Retrieval Pipeline</h3>
+                <p>
+                    사용자의 자연어 질의에서 적절한 NCIC 근거를 찾아
+                    LLM이 활용할 수 있도록 만드는 과정을 담당한다.
+                </p>
+                <ul>
+                    <li>Query 전처리</li>
+                    <li>Vector Search</li>
+                    <li>Keyword Search</li>
+                    <li>Hybrid Search</li>
+                    <li>Reranking / Filtering</li>
+                    <li>LLM Context 구성</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>03. 왜 이렇게 나누는가?</h2>
+
+        <div class="success">
+            <strong>핵심은 "둘 다 RAG를 해보되 같은 코드를 두 번 만들지 않는 것"</strong>
+        </div>
+
+        <p>
+            두 사람이 각각 전체 RAG를 처음부터 끝까지 따로 구현하면
+            동일한 데이터 전처리, 임베딩, DB 구축 등을 중복해서 작업하게 된다.
+            반대로 한 명에게 RAG 전체를 맡기면 다른 사람은 RAG를 충분히 경험하기 어렵다.
+        </p>
+
+        <p>
+            따라서 먼저 RAG를 두 영역으로 나누고 각자가 자신의 영역을 구현한 뒤,
+            중간 인터페이스를 맞춰 하나의 파이프라인으로 통합한다.
+        </p>
+
+        <div class="highlight">
+            <strong>개발 원칙</strong><br>
+            A는 "검색할 수 있는 데이터를 만드는 방법"을 깊게 경험하고,
+            B는 "질문에서 좋은 문서를 찾아오는 방법"을 깊게 경험한다.
+            이후 서로의 코드를 리뷰하고 역할을 일부 교환하여
+            두 사람 모두 RAG 전체 흐름을 이해한다.
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>04. 팀원 A — Indexing Pipeline</h2>
+
+        <div class="card a">
+            <h3>NCIC → 검색 가능한 지식베이스 만들기</h3>
+
+            <p>
+                A의 핵심 질문은 다음과 같다.
+            </p>
+
+            <div class="code">
+"NCIC 원본 자료를 어떤 형태로 가공해야
+나중에 사용자의 질문에 대해 정확한 교육과정 근거를
+검색할 수 있을까?"
+            </div>
+
+            <h3 style="margin-top:30px;">① 데이터 수집</h3>
+            <p>
+                프로젝트에서 사용할 NCIC 자료를 먼저 확보한다.
+                특히 모든 NCIC 자료를 가져오려고 하기보다는
+                프로젝트에서 실제로 사용할 교육과정 자료의 범위를 정하는 것이 중요하다.
+            </p>
+
+            <h3>② 데이터 구조화</h3>
+            <p>
+                성취기준 자체의 내용뿐만 아니라 검색과 필터링에 활용할
+                메타데이터를 함께 저장한다.
+            </p>
+
+            <div class="code">
+{
+  "content": "환경과 지속가능한 발전에 관한 성취기준...",
+  "subject": "사회",
+  "school_level": "중학교",
+  "grade": "중학교 2학년",
+  "curriculum": "2022 개정 교육과정",
+  "achievement_code": "성취기준 코드",
+  "source": "NCIC"
+}
+            </div>
+
+            <h3>③ Chunking</h3>
+            <p>
+                문서를 그대로 하나의 벡터로 저장하지 않고 검색에 적절한 단위로 분할한다.
+                이때 너무 크게 자르면 관련 없는 내용까지 함께 검색되고,
+                너무 작게 자르면 성취기준의 맥락이 사라질 수 있다.
+            </p>
+
+            <h3>④ Embedding</h3>
+            <p>
+                각 chunk를 임베딩하여 의미적으로 유사한 질문을 검색할 수 있도록 한다.
+            </p>
+
+            <h3>⑤ Vector DB</h3>
+            <p>
+                embedding과 원문, 메타데이터를 함께 저장한다.
+                이후 B가 Retrieval 단계에서 이 데이터를 사용한다.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>05. 팀원 B — Retrieval Pipeline</h2>
+
+        <div class="card b">
+            <h3>사용자 질문 → 적절한 NCIC 근거 찾기</h3>
+
+            <p>
+                B의 핵심 질문은 다음과 같다.
+            </p>
+
+            <div class="code">
+"사용자가 자연어로 요청한 수업의 특징을
+어떻게 분석해서 가장 적절한 NCIC 성취기준을
+검색할 수 있을까?"
+            </div>
+
+            <h3 style="margin-top:30px;">① Query 분석</h3>
+            <p>
+                사용자의 질문에서 검색에 중요한 정보를 추출한다.
+            </p>
+
+            <div class="code">
+사용자:
+"중학교 2학년 사회에서
+개발과 환경 보전을 주제로 토론하고 싶어."
+
+↓
+
+학년: 중학교 2학년
+과목: 사회
+핵심 주제: 개발 / 환경 보전
+수업 유형: 토론
+            </div>
+
+            <h3>② Vector Search</h3>
+            <p>
+                사용자 질문을 embedding으로 변환하고
+                Vector DB에서 의미적으로 유사한 NCIC 자료를 검색한다.
+            </p>
+
+            <h3>③ Keyword Search</h3>
+            <p>
+                "사회", "중학교", "환경"처럼 명확한 키워드를 기준으로
+                관련 문서를 필터링하거나 검색한다.
+            </p>
+
+            <h3>④ Hybrid Search</h3>
+            <p>
+                Vector Search와 Keyword Search를 결합한다.
+                NCIC처럼 코드, 학년, 과목 등의 명확한 메타데이터가 중요한 자료에서는
+                의미 검색만 사용하는 것보다 하이브리드 방식이 유리할 수 있다.
+            </p>
+
+            <div class="code">
+사용자 Query
+      │
+      ├──────────────→ Vector Search
+      │
+      └──────────────→ Keyword / Metadata Search
+                           │
+                           ↓
+                      결과 결합
+                           ↓
+                       Reranking
+                           ↓
+                       Top-K 문서
+            </div>
+
+            <h3>⑤ Context 구성</h3>
+            <p>
+                검색된 문서를 LLM에 전달할 수 있는 형태로 정리한다.
+                이때 단순히 검색 결과를 그대로 넘기는 것이 아니라
+                성취기준 코드, 원문, 출처 등의 정보를 함께 전달한다.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>06. 두 사람의 RAG를 어떻게 합치는가?</h2>
+
+        <p>
+            A가 만든 Vector DB를 B가 그대로 사용하고,
+            B의 Retrieval 결과를 다시 LLM의 Context로 전달한다.
+        </p>
+
+        <div class="code">
+┌─────────────────────────────┐
+│        TEAM MEMBER A        │
+│                             │
+│ NCIC → 전처리 → Chunking    │
+│          ↓                  │
+│      Embedding              │
+│          ↓                  │
+│      Vector DB              │
+└──────────────┬──────────────┘
+               │
+               │ 검색 인터페이스
+               ▼
+┌─────────────────────────────┐
+│        TEAM MEMBER B        │
+│                             │
+│ 사용자 Query                │
+│       ↓                     │
+│ Query 분석                  │
+│       ↓                     │
+│ Vector / Keyword Search     │
+│       ↓                     │
+│ Hybrid Search               │
+│       ↓                     │
+│ Reranking                   │
+│       ↓                     │
+│ Top-K NCIC 근거             │
+└──────────────┬──────────────┘
+               │
+               ▼
+             LLM
+               │
+               ▼
+      수업계획안 + 교육과정 근거
+        </div>
+
+        <div class="warning">
+            <strong>중요:</strong>
+            A와 B가 Vector DB나 검색 함수를 각자 따로 만들면 안 된다.
+            A가 구축한 데이터 저장 구조와 검색 인터페이스를 먼저 합의하고,
+            B는 그 인터페이스를 사용해 Retrieval을 개발하는 방식이 좋다.
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>07. 서로 역할을 바꿔보는 단계</h2>
+
+        <p>
+            1차 개발이 끝났다고 해서 각자 자신의 영역만 끝까지 가져가지 않는다.
+            서로 코드를 리뷰하면서 역할을 일부 교환한다.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>단계</th>
+                    <th>팀원 A</th>
+                    <th>팀원 B</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1차 개발</td>
+                    <td>Indexing Pipeline</td>
+                    <td>Retrieval Pipeline</td>
+                </tr>
+                <tr>
+                    <td>코드 리뷰</td>
+                    <td>Retrieval 코드 리뷰</td>
+                    <td>Indexing 코드 리뷰</td>
+                </tr>
+                <tr>
+                    <td>2차 개선</td>
+                    <td>검색 방식 개선 참여</td>
+                    <td>Chunking / Embedding 개선 참여</td>
+                </tr>
+                <tr>
+                    <td>최종</td>
+                    <td colspan="2">하나의 RAG Pipeline으로 통합</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="success">
+            이렇게 하면 결과적으로 두 사람 모두
+            <strong>전처리 → Chunking → Embedding → Vector DB → Retrieval → LLM</strong>
+            전체 흐름을 이해할 수 있다.
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>08. 더 추천하는 방식 — Retrieval 방법 비교</h2>
+
+        <p>
+            프로젝트에서 단순히 RAG를 구현하는 것보다,
+            <strong>어떤 검색 방식이 NCIC 자료에 더 적합한지 실험하는 것</strong>이 좋다.
+        </p>
+
+        <div class="cards">
+            <div class="card a">
+                <div class="label">APPROACH A</div>
+                <h3>Vector Search</h3>
+
+                <div class="code">
+Query
+ ↓
+Embedding
+ ↓
+Vector DB
+ ↓
+Top-K
+                </div>
+
+                <p>
+                    의미적으로 유사한 문서를 찾는 방식.
+                    자연어 표현이 원문의 표현과 달라도 관련 자료를 찾을 수 있다는 장점이 있다.
+                </p>
+            </div>
+
+            <div class="card b">
+                <div class="label">APPROACH B</div>
+                <h3>Hybrid Search</h3>
+
+                <div class="code">
+Query
+ ↓
+┌──────────────┐
+│              │
+Vector       Keyword
+Search       Search
+│              │
+└──────┬───────┘
+       ↓
+결과 결합
+       ↓
+Reranking
+       ↓
+Top-K
+                </div>
+
+                <p>
+                    의미 기반 검색과 키워드/메타데이터 기반 검색을 함께 사용한다.
+                    학년, 과목, 성취기준 코드처럼 정확한 조건이 중요한 NCIC 자료와 잘 맞을 수 있다.
+                </p>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <strong>핵심 실험 질문</strong><br>
+            "우리 프로젝트의 실제 NCIC 질의에서는
+            Vector Search와 Hybrid Search 중 어떤 방식이 더 적절한가?"
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>09. RAG 평가까지 해보기</h2>
+
+        <p>
+            RAG를 만들었다면 "검색이 되는 것 같다"로 끝내지 말고
+            실제 질의셋을 만들어 검색 품질을 비교한다.
+        </p>
+
+        <h3>테스트 질의 예시</h3>
+
+        <div class="code">
+1. 중학교 사회에서 환경 문제를 주제로 토론할 때
+   적절한 성취기준은?
+
+2. 개발과 환경 보전의 균형을 토론하는 수업과
+   관련된 사회과 성취기준은?
+
+3. 중학생이 지속가능한 발전에 대해 토론할 수 있는
+   교육과정 근거는?
+
+4. 환경 보전과 경제 발전의 관계를 다루는
+   성취기준은?
+        </div>
+
+        <h3 style="margin-top:30px;">평가 항목</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>평가 항목</th>
+                    <th>확인 내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Top-1</td>
+                    <td>가장 관련성이 높은 성취기준이 1순위로 검색되는가?</td>
+                </tr>
+                <tr>
+                    <td>Top-3</td>
+                    <td>적절한 성취기준이 상위 3개 안에 포함되는가?</td>
+                </tr>
+                <tr>
+                    <td>학년 적합성</td>
+                    <td>사용자가 요청한 학년과 일치하는가?</td>
+                </tr>
+                <tr>
+                    <td>과목 적합성</td>
+                    <td>요청한 과목과 일치하는가?</td>
+                </tr>
+                <tr>
+                    <td>내용 적합성</td>
+                    <td>실제 수업 주제와 관련된 성취기준인가?</td>
+                </tr>
+                <tr>
+                    <td>근거 활용성</td>
+                    <td>LLM이 실제 수업계획안의 근거로 활용할 수 있는가?</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="success">
+            최종적으로
+            <strong>"Vector Search와 Hybrid Search를 비교하고,
+            NCIC 질의셋을 통해 검색 결과를 평가하여 최종 방식을 선정했다"</strong>
+            라는 개발 과정과 근거를 만들 수 있다.
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>10. 전체 서비스에 RAG를 연결하면</h2>
+
+        <div class="code">
+사용자
+  │
+  ▼
+┌──────────────────────┐
+│     Chat UI          │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│ 멀티턴 State Manager │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│       LLM / Agent    │
+└───────┬──────────────┘
+        │
+        │ 계획안 생성
+        ▼
+┌──────────────────────┐
+│    Draft Plan        │
+└──────────┬───────────┘
+           │
+           │ NCIC 근거 필요
+           ▼
+┌──────────────────────┐
+│      RAG Pipeline    │
+│                      │
+│ Query                │
+│   ↓                  │
+│ Retrieval            │
+│   ↓                  │
+│ NCIC Top-K           │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│   LLM 검증           │
+│                      │
+│ 계획안 ↔ 성취기준     │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│ 최종 계획안 + 근거    │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│     Notion MCP       │
+└──────────┬───────────┘
+           │
+           ▼
+      Notion Page
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>11. 2인 최종 역할 분담</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>영역</th>
+                    <th>팀원 A</th>
+                    <th>팀원 B</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NCIC 자료 조사</td>
+                    <td>공동</td>
+                    <td>공동</td>
+                </tr>
+                <tr>
+                    <td>데이터 전처리</td>
+                    <td>주 담당</td>
+                    <td>리뷰 / 개선</td>
+                </tr>
+                <tr>
+                    <td>Chunking</td>
+                    <td>주 담당</td>
+                    <td>개선 참여</td>
+                </tr>
+                <tr>
+                    <td>Embedding / Vector DB</td>
+                    <td>주 담당</td>
+                    <td>사용 및 이해</td>
+                </tr>
+                <tr>
+                    <td>Vector Search</td>
+                    <td>협업</td>
+                    <td>주 담당</td>
+                </tr>
+                <tr>
+                    <td>Keyword Search</td>
+                    <td>협업</td>
+                    <td>주 담당</td>
+                </tr>
+                <tr>
+                    <td>Hybrid Search</td>
+                    <td>개선 참여</td>
+                    <td>주 담당</td>
+                </tr>
+                <tr>
+                    <td>RAG 평가</td>
+                    <td>공동</td>
+                    <td>공동</td>
+                </tr>
+                <tr>
+                    <td>LLM Prompt</td>
+                    <td>공동</td>
+                    <td>공동</td>
+                </tr>
+                <tr>
+                    <td>멀티턴 상태 관리</td>
+                    <td>리뷰</td>
+                    <td>주 담당</td>
+                </tr>
+                <tr>
+                    <td>Chat UI</td>
+                    <td>리뷰</td>
+                    <td>주 담당</td>
+                </tr>
+                <tr>
+                    <td>Notion MCP</td>
+                    <td>주 담당</td>
+                    <td>리뷰</td>
+                </tr>
+                <tr>
+                    <td>최종 통합</td>
+                    <td>공동</td>
+                    <td>공동</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>12. 추천 개발 순서</h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <strong><span class="badge">STEP 1</span> 데이터 구조 합의</strong>
+                NCIC 자료에서 어떤 정보를 저장할지 결정한다.
+                성취기준 코드, 성취기준 내용, 학년, 과목, 교육과정 버전,
+                출처 등의 필드를 정의한다.
+            </div>
+
+            <div class="timeline-item">
+                <strong><span class="badge">STEP 2</span> A의 Indexing 구현</strong>
+                NCIC 자료를 수집하고 전처리한 뒤 Chunking → Embedding →
+                Vector DB까지 구축한다.
+            </div>
+
+            <div class="timeline-item">
+                <strong><span class="badge">STEP 3</span> B의 Retrieval 구현</strong>
+                Query → Vector Search → Keyword Search → Hybrid Search 등의
+                검색 방식을 구현한다.
+            </div>
+
+            <div class="timeline-item">
+                <strong><span class="badge">STEP 4</span> RAG 통합</strong>
+                A의 Vector DB와 B의 Retrieval을 연결하고
+                LLM에 검색 결과를 Context로 전달한다.
+            </div>
+
+            <div class="timeline-item">
+                <strong><span class="badge">STEP 5</span> 검색 방식 비교</strong>
+                Vector Search와 Hybrid Search를 동일한 테스트 질의에 적용하여
+                검색 결과를 비교한다.
+            </div>
+
+            <div class="timeline-item">
+                <strong><span class="badge">STEP 6</span> RAG 평가</strong>
+                Top-1, Top-3, 학년/과목 적합성, 내용 적합성 등을 기준으로
+                검색 품질을 평가한다.
+            </div>
+
+            <div class="timeline-item">
+                <strong><span class="badge">STEP 7</span> 역할 교환 / 코드 리뷰</strong>
+                A가 Retrieval을 개선하고 B가 Chunking/Embedding 등을 개선하면서
+                서로 RAG 전체 구조를 경험한다.
+            </div>
+
+            <div class="timeline-item">
+                <strong><span class="badge">STEP 8</span> 전체 서비스 통합</strong>
+                멀티턴 챗봇 → 수업계획안 생성 → RAG 검증 →
+                Notion MCP → 페이지 링크 반환까지 연결한다.
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>13. 최종적으로 가져가야 할 핵심</h2>
+
+        <div class="intro">
+            <p>
+                이 프로젝트에서 중요한 것은 "RAG를 넣었다"는 사실 자체가 아니다.
+                <strong>실제 NCIC 교육과정 자료를 어떻게 검색하고,
+                어떤 근거를 선택하며, 그 근거가 생성된 수업계획안과
+                얼마나 적절하게 연결되는지</strong>를 보여주는 것이다.
+            </p>
+
+            <div class="highlight">
+                <strong>따라서 최종 개발 스토리</strong><br><br>
+                NCIC 자료를 검색 가능한 형태로 구축한다
+                → Vector Search를 구현한다
+                → Keyword/Metadata Search를 추가한다
+                → Hybrid Search를 구성한다
+                → 실제 NCIC 질의셋으로 검색 품질을 비교한다
+                → 가장 적절한 검색 방식을 선택한다
+                → LLM이 검색된 성취기준을 근거로 수업계획안을 검증한다
+                → 최종 결과를 Notion MCP로 저장한다
+            </div>
+
+            <p>
+                이렇게 진행하면 두 명 모두 RAG의 전체 구조를 경험하면서도
+                개발 중복은 최소화할 수 있고, 최종 발표에서도 단순 기능 구현이 아니라
+                <strong>검색 방식에 대한 실험과 평가를 거쳐 서비스에 적용했다는 개발 과정</strong>을 보여줄 수 있다.
+            </p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    NCIC RAG × 멀티턴 챗봇 × Notion MCP 프로젝트 개발 전략
+</footer>
+
+</body>
+</html>
