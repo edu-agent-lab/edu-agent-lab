@@ -13,7 +13,7 @@
 from __future__ import annotations
 
 from content_areas import relevant_areas
-from llm_client import generate
+from llm_client import chat, generate
 
 # 모든 자료 유형이 같은 8개 항목으로 나온다. 항목을 고정하지 않으면 모델이 준비물·교사
 # 유의사항·차별화·현장 연계 같은 걸 알아서 붙여 장황해지고, 정작 읽기 자료·핵심 개념·
@@ -198,3 +198,31 @@ def build_prompt(
 def generate_material(**kwargs) -> str:
     """build_prompt와 같은 인자를 받아 자료 본문을 돌려준다."""
     return generate(build_prompt(**kwargs), system=SYSTEM)
+
+
+REVISE = """위 자료를 아래 요청대로 고쳐서 **전체를 다시** 써라.
+
+요청: {request}
+
+- 처음 지시(8개 항목 구성, 제시된 성취기준만 근거, 배경 읽기 자료 범위, 코드 표기 위치)는
+  그대로 지킨다. 요청이 이와 부딪치면 지시를 따르고, 맨 끝에 한 줄로 그 이유를 밝힌다.
+- 요청과 관계없는 부분은 바꾸지 않는다.
+"""
+
+
+def revise_material(prompt: str, material: str, request: str) -> str:
+    """생성한 자료를 사용자 요청대로 고친다.
+
+    대화 이력을 다 넘기지 않고 [처음 프롬프트, 최신 자료, 이번 요청]만 넘긴다. 앞선 수정
+    요청은 최신 자료에 이미 반영돼 있고, 버전마다 4천 자씩 쌓으면 몇 번 만에 프롬프트가
+    수만 자가 된다. 처음 프롬프트는 빼면 안 된다 — 근거 성취기준과 과목 맥락이 거기 있어서,
+    빼면 수정 중에 성취기준을 지어낼 여지가 생긴다.
+    """
+    return chat(
+        [
+            {"role": "user", "content": prompt},
+            {"role": "assistant", "content": material},
+            {"role": "user", "content": REVISE.format(request=request)},
+        ],
+        system=SYSTEM,
+    )

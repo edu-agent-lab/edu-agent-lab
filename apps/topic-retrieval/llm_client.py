@@ -68,10 +68,13 @@ def _backoff(attempt: int) -> float:
 
 def generate(prompt: str, system: str | None = None) -> str:
     """프롬프트를 보내고 텍스트를 받는다. 실패하면 지수 백오프로 재시도한다."""
-    messages = []
+    return chat([{"role": "user", "content": prompt}], system=system)
+
+
+def chat(messages: list[dict], system: str | None = None) -> str:
+    """대화 이력(user/assistant 메시지 목록)을 보내고 다음 답을 받는다."""
     if system:
-        messages.append({"role": "system", "content": system})
-    messages.append({"role": "user", "content": prompt})
+        messages = [{"role": "system", "content": system}, *messages]
 
     model = _model()
     last: Exception = RuntimeError("generate: 알 수 없는 오류")
